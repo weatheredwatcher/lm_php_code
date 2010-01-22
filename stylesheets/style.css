@@ -1,0 +1,195 @@
+/* 
+    Document   : style.css
+    Created on : Oct 2, 2009, 1:48:14 PM
+    Author     : David Duggins
+    Description:
+        This is the main stylesheet for the LeveragedMedia Email Managment Utillity
+*/
+
+	
+/* @group generic tags */
+body {
+	background:silver;
+	}
+
+
+	
+/* @group generic ids */
+#header {
+	position:relative;
+	top:0;
+	height:134px;
+	background-color: black;
+}
+
+#menu {
+	position:absolute;
+	background-color: white;
+	color: back;
+	top:141px;
+	text-align:left;
+	width:207px;
+	height:600px;
+}
+
+#menu ul {
+list-style: none;
+
+}
+#menu li a {
+
+text-decoration:none;
+
+}
+
+#main {
+	position:absolute;
+	top:150px;
+	left:250px;
+	height:400px;
+	width:900px;
+}
+
+
+	
+/* @group generic classes */
+.center {
+	text-align:center;
+}
+
+
+/***/
+#wrapper {
+margin:0 auto;
+width:px;
+}
+
+#slider {
+margin:0 auto;
+position:absolute;
+top:200px;
+
+width:520px;
+border: blue;
+border-width: medium;
+}
+.scroll {
+background:url("images/content_pane-gradient.gif") repeat-x scroll left bottom #FFFFFF;
+clear:left;
+height:250px;
+overflow-x:hidden;
+overflow-y:auto;
+position:relative;
+width:520px;
+}
+.scrollContainer div.panel {
+height:210px;
+padding:20px;
+width:500px;
+}
+#shade {
+background:url("images/shade.jpg") no-repeat scroll 0 0 #EDEDEC;
+height:50px;
+}
+
+ul.navigation  {
+list-style:none outside none;
+margin:0;
+padding:0 0 9px;
+}
+ul.navigation li {
+display:inline;
+margin-right:10px;
+}
+ul.navigation a {
+color:#000000;
+padding:10px;
+text-decoration:none;
+}
+ul.navigation a:hover {
+background-color:#F6F6F6;
+}
+ul.navigation a.selected {
+background-color:#FFFFFF;
+}
+ul.navigation a:focus {
+outline:medium none;
+}
+.scrollButtons {
+cursor:pointer;
+position:absolute;
+top:150px;
+}
+.scrollButtons.left {
+left:-20px;
+}
+.scrollButtons.right {
+right:-20px;
+}
+.hide {
+display:none;
+}
+
+/* Begin Pop-Up Bubble Style */
+
+       .bubbleInfo {
+           position: relative;
+           top: 150px;
+           left: 100px;
+           width: 500px;
+       }
+       .trigger {
+           position: absolute;
+       }
+    
+       /* Bubble pop-up */
+
+       .popup {
+       	position: absolute;
+       	display: none;
+       	z-index: 50;
+       	border-collapse: collapse;
+       }
+
+       .popup td.corner {
+       	height: 15px;
+       	width: 19px;
+       }
+
+       .popup td#topleft { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-1.png); }
+       .popup td.top { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-2.png); }
+       .popup td#topright { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-3.png); }
+       .popup td.left { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-4.png); }
+       .popup td.right { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-5.png); }
+       .popup td#bottomleft { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-6.png); }
+       .popup td.bottom { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-7.png); text-align: center;}
+       .popup td.bottom img { display: block; margin: 0 auto; }
+       .popup td#bottomright { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-8.png); }
+
+       .popup table.popup-contents {
+       	font-size: 12px;
+       	line-height: 1.2em;
+       	background-color: #fff;
+       	color: #666;
+       	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+       	}
+
+       table.popup-contents th {
+       	text-align: right;
+       	text-transform: lowercase;
+       	}
+
+       table.popup-contents td {
+       	text-align: left;
+       	}
+
+       tr#release-notes th {
+       	text-align: left;
+       	text-indent: -9999px;
+       	background: url(http://jqueryfordesigners.com/demo/images/coda/starburst.gif) no-repeat top right;
+       	height: 17px;
+       	}
+
+       tr#release-notes td a {
+       	color: #333;
+       }

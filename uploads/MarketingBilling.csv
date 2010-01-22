@@ -1,0 +1,38 @@
+Internal ID,ID,Name,Subscriber List,# of Physical Addresses,# of Email Addresses,Year,Subject,Subject Code,Month,Item Pricing Level,Company DBA Name,Billing State/Province,Status
+238,101,"Zach, Zan",Z - Customer File Upload - A 50 E0(1)_101.csv,50,0,2010,Ants,100101,February,,ZZZ dba Pest Zoo,NJ,Closed Won
+239,101,"Zach, Zan",Z - Customer File Upload - A 50 E0(1)_101.csv,50,0,2010,Schools,100120,February,,ZZZ dba Pest Zoo,NJ,Closed Won
+287,146,"Thomas, Karren",,,,2010,,,February,,Acme,CA,Closed Won
+325,175,"Tuesdaytest, Christine",Potential Promoter List_175.csv,1,1,2010,Stinging Insects,100124,February,,Company DBA,SC,Closed Won
+339,198,"Sheppard, Scott",S - Customer File Upload - A42 E49_198.csv,42,49,2010,Birds,100104,February,,SSS DBA PestSail Maker,SD,Closed Won
+340,198,"Sheppard, Scott",S - Customer File Upload - A42 E49_198.csv,42,49,2010,Carpenter Ants,100105,February,,SSS DBA PestSail Maker,SD,Closed Won
+341,199,"Thomas, Tiffany",T - Customer File Upload - A41 E50_199.csv,41,50,2010,Cockroaches,100106,February,,TTT DBA PestTanning Salon,TN,Closed Won
+415,199,"Thomas, Tiffany",T - Customer File Upload - A41 E50_199.csv,41,50,2010,Fumigation,100112,February,,TTT DBA PestTanning Salon,TN,Closed Won
+414,199,"Thomas, Tiffany",T - Customer File Upload - A41 E50_199.csv,41,50,2010,Food Service,100111,February,,TTT DBA PestTanning Salon,TN,Closed Won
+413,199,"Thomas, Tiffany",T - Customer File Upload - A41 E50_199.csv,41,50,2010,Flies,100109,February,,TTT DBA PestTanning Salon,TN,Closed Won
+412,199,"Thomas, Tiffany",T - Customer File Upload - A41 E50_199.csv,41,50,2010,Fire Ants,100107,February,,TTT DBA PestTanning Salon,TN,Closed Won
+411,199,"Thomas, Tiffany",T - Customer File Upload - A41 E50_199.csv,41,50,2010,Carpenter Ants,100105,February,,TTT DBA PestTanning Salon,TN,Closed Won
+410,199,"Thomas, Tiffany",T - Customer File Upload - A41 E50_199.csv,41,50,2010,Birds,100104,February,,TTT DBA PestTanning Salon,TN,Closed Won
+388,199,"Thomas, Tiffany",T - Customer File Upload - A41 E50_199.csv,41,50,2010,Hospitality,100114,February,,TTT DBA PestTanning Salon,TN,Closed Won
+342,200,"Oppenheimer, Opey",O - Customer File Upload - A46 E45_200.csv,46,45,2010,Fire Ants,100107,February,,OOO DBA Pest Outboard Motor,OH,Closed Won
+343,201,"Prince, Paul",P - Customer File Upload - A45 E 46_201.csv,45,46,2010,Fleas,100108,February,,PPP DBA Pest Control,PA,Closed Won
+381,217,"Duggins, Donald",D - Customer File Upload - A47 E47_217.csv,47,47,2010,Food Service,100111,February,,DDD DBA Pest Duggins School,DE,Closed Won
+389,301,"Zeeler, Zee",Z - Customer File Upload - A 50 E0_301.csv,50,43,2010,Termites,100125,February,,Zeeler Pest Control,CA,Closed Won
+406,305,"Jennings, David",CC - Customer File Upload A10 E10_305.csv,10,10,2010,Preventing Fire Damage In The Office,200216,February,,Dave Jennings Puroclean,SC,Closed Won
+407,305,"Jennings, David",CC - Customer File Upload A10 E10_305.csv,10,10,2010,Mold Prevention Procedures,200210,February,,Dave Jennings Puroclean,SC,Closed Won
+390,305,"Jennings, David",CC - Customer File Upload A10 E10_305.csv,10,10,2010,Antimcrobials,200203,February,,Dave Jennings Puroclean,SC,Closed Won
+391,305,"Jennings, David",CC - Customer File Upload A10 E10_305.csv,10,10,2010,Carbon Monoxide,200204,February,,Dave Jennings Puroclean,SC,Closed Won
+394,307,"Nunamaker, AJ",Z - Customer File Upload - A 50 E0_307.csv,50,0,2010,Water In The Kitchen,200205,February,,PuroClean,SC,Closed Won
+392,307,"Nunamaker, AJ",Z - Customer File Upload - A 50 E0_307.csv,50,0,2010,Why You Should Choose PuroClean,200202,February,,PuroClean,SC,Closed Won
+393,307,"Nunamaker, AJ",Z - Customer File Upload - A 50 E0_307.csv,50,0,2010,After the Fire is Out,200201,February,,PuroClean,SC,Closed Won
+395,308,"Puroclean1, CWW",CWWPCTESTFile_308.csv,5,5,2010,Winter Threats,200208,February,,CWWpC1 DBA,SC,Closed Won
+396,308,"Puroclean1, CWW",CWWPCTESTFile_308.csv,5,5,2010,Winter Safety,200207,February,,CWWpC1 DBA,SC,Closed Won
+398,311,"Johnson, Dawn",AA - Customer File Upload A25 E25_311.csv,25,25,2010,What We Do,200206,February,,Dawn Johnson PuroClean,NJ,Closed Won
+397,311,"Johnson, Dawn",AA - Customer File Upload A25 E25_311.csv,25,25,2010,Types of Water Damage,200213,February,,Dawn Johnson PuroClean,NJ,Closed Won
+409,312,"CWWPCTest2, CWWPCTest2",CWW test 2 List_312.csv,5,5,2010,Holiday Safety Tips,200218,February,,CWWPCTest2dba,SC,Closed Won
+408,312,"CWWPCTest2, CWWPCTest2",CWW test 2 List_312.csv,5,5,2010,Can Damaged Hardwood Floors Be Saved,200217,February,,CWWPCTest2dba,SC,Closed Won
+402,312,"CWWPCTest2, CWWPCTest2",CWW test 2 List_312.csv,5,5,2010,MRSA,200211,February,,CWWPCTest2dba,SC,Closed Won
+401,312,"CWWPCTest2, CWWPCTest2",CWW test 2 List_312.csv,5,5,2010,Identifying Water Damage,200209,February,,CWWPCTest2dba,SC,Closed Won
+427,313,"Roach, Bob",R - Customer File Upload - A43 E48_313.csv,43,48,2010,Turkey Fryer Safety,200212,February,,PuroClean,SC,Closed Won
+403,313,"Roach, Bob",R - Customer File Upload - A43 E48_313.csv,43,48,2010,Turkey Fryer Safety,200212,February,,PuroClean,SC,Closed Won
+404,313,"Roach, Bob",R - Customer File Upload - A43 E48_313.csv,43,48,2010,Water Heater Safety,200214,February,,PuroClean,SC,Closed Won
+405,313,"Roach, Bob",,,,2010,Concrete Water Damage,200215,February,,PuroClean,SC,Closed Won

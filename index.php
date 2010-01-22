@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>LeveragedMedia BackOffice</title>
+  <!--LeveragedMedia BackOffice System Version 0.01b -->
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
+  <link href="stylesheets/thickbox.css" rel="stylesheet" type="text/css" />
+		<script src="javascript/jquery-1.3.2.min.js" type="text/javascript"></script>
+		<script src="javascript/thickbox.js" type="text/javascript"></script>
+		<script src="javascript/pop-up.js" type="text/javascript"></script>
+        </head>
+    <body>
+        <?php
+        include("includes/global-inc.php");
+        include("includes/dbconnect.php");
+		include("includes/global-class.php");
+        set_error_handler("myErrorHandler");
+        ?>
+        <div id="header">
+            <a href="index.php"><img src="images/header.png" alt="LeveragedMedia" /></a>
+        </div>
+        <div id="main">
+        <?php
+        
+    $id = $_GET['id'];
+    
+        
+
+if (!isset($id)){
+
+$id = "main";
+
+}
+
+include($id.'.php');
+        ?>
+        </div>
+       
+ 		<div id="menu">
+            <ul> 
+            	<li><a href="?id=billing">Billing Managment</a></li>
+                <li><a href="?id=email">Email Campaign</a></li>
+                <li><a href="?id=archives">Archive Managment</a></li>
+                <li><a href="?id=software">Software Managment</a></li>
+                <li><a href="?id=logger">System Logs</a></li>
+				<li><a href="http://192.168.1.17:3000" target="_blank">Project Tracker (new window)</a></li>
+            </ul>
+        </div>
+        
+    </body>
+</html>

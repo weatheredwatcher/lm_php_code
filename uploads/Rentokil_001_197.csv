@@ -1,0 +1,5 @@
+Recipient BUSINESS NAME,"Recipient PREFIX (Mr., Mrs., Ms., Dr., etc.)",Recipient FIRST  NAME,Recipient LAST NAME,Recipient ADDRESS 1,Recipient ADDRESS 2,Recipient CITY ,Recipient STATE,Recipient  ZIP,Recipient BIRTH DATE,Recipient EMAIL ADDRESS,Recipient MESSAGE
+MD,Mr,Matt,Daly,5800 Explorer,,Miss,NY,12345,,md@ns.com,
+MD,Mr,Matt,Daly,5800 Explorer,,Miss,NY,12345,,,
+MD,Mr,Matt,Daly,,5800 Explorer,Miss,NY,12345,,md@ns.com,
+MD,Mr,Matt,Daly,5800 Explorer,,Miss,NY,12345,,,
