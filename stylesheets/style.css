@@ -50,7 +50,11 @@ text-decoration:none;
 	width:900px;
 }
 
-
+#log {
+	
+	height:500px;
+	overflow:scroll;
+}
 	
 /* @group generic classes */
 .center {
