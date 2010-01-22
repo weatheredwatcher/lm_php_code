@@ -7,11 +7,15 @@ include 'includes/dbconnect.php';
 $results = mysql_query("SELECT * FROM tbl_LOG ");
 $timestamps = mysql_query("SELECT DISTINCT(timstamp) FROM tbl_LOG");
 $page_locations = mysql_query("SELECT DISTINCT(page_location) FROM tbl_LOG");
-
+while($row=mysql_fetch_row($results)){
+	
+	$page_location = $row[1];
+	$timestamp = $row[2];
+}
 ?>
 
 <h2>System Log</h2>
 
 <table>
-	<tr><td></td></tr>
+	<tr><td><?=$page_location?></td><td><?=$timestamp?></td></tr>
 	</table>
