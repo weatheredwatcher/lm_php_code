@@ -118,7 +118,5 @@ echo 'Printer Data File Created.....FAIL';
 
 ?>
 
-<!--
-	TODO Need a Button for downloaded the Direct Mail File
--->
-<a href="uploads/tbl_customers.csv">Download Direct Print File</a>
+
+<a href="uploads/tbl_customers.csv"><img src="images/DownloadsLarge.png" alt="DownloadsLarge" border="0" /></a>

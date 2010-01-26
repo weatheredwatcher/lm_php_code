@@ -247,49 +247,9 @@ if(file_exists($ApprovedBilling)){$ab_exists = "EXISTS";}else {$ab_exists = "NOT
 <tr><td>ApprovedBilling.csv</td><td><?=$ab_exists?></td></tr>
 </table>
 
-<!--
-	FIXME After the button is in place need to fix the code and css layout here
--->
-    
-    <div class="bubbleInfo">
-        <div>
-            <p>Please Download the <a href="uploads/billing.csv" class="trigger">billing.csv</a> file</p>
-        </div>
-        <table id="dpop" class="popup">
-        	<tbody><tr>
-        		<td id="topleft" class="corner"></td>
-        		<td class="top"></td>
 
-        		<td id="topright" class="corner"></td>
-        	</tr>
-
-        	<tr>
-        		<td class="left"></td>
-        		<td><table class="popup-contents">
-        			<tbody><tr>
-        				<th>File:</th>
-        				<td>billing.csv</td>
-
-        			</tr>
-        			
-        		</tbody></table>
-
-        		</td>
-        		<td class="right"></td>    
-        	</tr>
-
-        	<tr>
-        		<td class="corner" id="bottomleft"></td>
-
-        		<td class="bottom"><img width="30" height="29" alt="popup tail" src="http://static.jqueryfordesigners.com/demo/images/coda/bubble-tail2.png"/></td>
-        		<td id="bottomright" class="corner"></td>
-        	</tr>
-        </tbody></table>
-    </div>
-
+<a href="uploads/billing.csv"><img src="images/BillingCSVLarge.png" alt="Billing.csv" border="0" /></a>
 <p>After you have processed the billing.csv through netsuite, please upload ApprovedBilling.csv here:</p>
-
-
 <form enctype="multipart/form-data" action="?id=process_subscriber_lists" method="POST" onsubmit="return checkNames()">
         <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
         ApprovedBilling.csv: <input name="approved" id='web' type="file" /><br />

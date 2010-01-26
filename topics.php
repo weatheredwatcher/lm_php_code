@@ -12,6 +12,9 @@ $results=mysql_query("SELECT * FROM tbl_topics ORDER BY id");
 
 
 ?>
+<a href="?id=email"><img src="images/back.png" width="62" border="0"/></a>
+<img src="images/topics.png" width="62" />
+<h2>Email Topics List</h2>
 <table>
  <?php
 while($row=mysql_fetch_row($results)){

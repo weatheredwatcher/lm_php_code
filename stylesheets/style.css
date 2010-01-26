@@ -134,6 +134,26 @@ right:-20px;
 display:none;
 }
 
+#demotip {
+
+	display:none;
+	background:transparent url(tooltip/white_arrow.png);
+	font-size:12px;
+	height:65px;
+	width:160px;
+	padding:25px;
+	color:#000000;
+		
+	
+}
+
+/* style the trigger elements */
+#demo img {
+	border:0;
+	cursor:pointer;
+	margin:0 8px;
+}
+
 /* Begin Pop-Up Bubble Style */
 
        .bubbleInfo {

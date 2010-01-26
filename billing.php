@@ -16,7 +16,8 @@ if(file_exists($ApprovedBilling)){$ab_exists = "EXISTS";}else {$ab_exists = "NOT
 
 //TODO:Need to clean up the Billing main page.  It's a bit cluttered
 ?>
-
+<a href="?id=main"><img src="images/back.png" width="62" border="0"/></a>
+<img src="images/billing.png" width="62" />
 <h2>This is the Billing Management Page</h2>
 <table border="1">
 <tr><td>WebHostingBilling.csv</td><td><?=$wb_exists?></td></tr>

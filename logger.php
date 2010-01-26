@@ -9,7 +9,8 @@ $timestamps = mysql_query("SELECT DISTINCT(timstamp) FROM tbl_LOG");
 $page_locations = mysql_query("SELECT DISTINCT(page_location) FROM tbl_LOG");
 
 ?>
-
+<a href="?id=main"><img src="images/back.png" width="62" border="0"/></a>
+<img src="images/logger.png" width="62" />
 <h2>System Log</h2>
 
 <div id="log">

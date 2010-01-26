@@ -33,7 +33,7 @@ $template = fopen($templateFilePath, "r");
 if (ftp_fput($conn_id, $clientFile, $client, FTP_BINARY)) {
     $mailLog->set_log("Successfully uploaded $file");
 	$mailLog->write_log();
-	$clientSlug = 1
+	$clientSlug = 1;
 } else {
     $mailLog->set_log("Error uploading $file");
 	$mailLog->write_log();

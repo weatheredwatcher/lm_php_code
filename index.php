@@ -9,9 +9,11 @@
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
   <link href="stylesheets/thickbox.css" rel="stylesheet" type="text/css" />
-		<script src="javascript/jquery-1.3.2.min.js" type="text/javascript"></script>
+		<script src="javascript/jquery-1.3.2.min.s" type="text/javascript"></script>
+		<script src="http://cdn.jquerytools.org/1.1.2/jquery.tools.min.js"></script>
+		
 		<script src="javascript/thickbox.js" type="text/javascript"></script>
-		<script src="javascript/pop-up.js" type="text/javascript"></script>
+	
         </head>
     <body>
         <?php
