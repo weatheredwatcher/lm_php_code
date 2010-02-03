@@ -2,7 +2,7 @@
 $host = 'localhost';
 $username = 'root';
 $password = 'password';
-$database = 'LeveragedMedia';
+$database = 'LeveragedMedia_testing';
 
 
 mysql_connect($host, $username, $password) or die(mysql_error());
