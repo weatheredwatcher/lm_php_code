@@ -156,16 +156,17 @@ function getTemplate(){
 	$weburl = str_replace("http://", " ", $newurl);
 	$tagline = $newrow[12];
 
-	/** DEFINE INDUSTRIES BLOCK
-	*
-	* When you add a new industry, you must also add a new if statement 
-	* to this block in the format of if($newrow[13] =="INDUSTRY NAME"){$bus_type = ###;}
-	* Where INDUSTRY NAME is the exact industry name from the NetSuite custom field and ### 
-	* is the three digit bus_type number 
+	/** 
+	DEFINE INDUSTRIES BLOCK
+	 When you add a new industry, you must also add a new if statement 
+	 to this block in the format of if($newrow[13] =="INDUSTRY NAME"){$bus_type = ###;}
+	 Where INDUSTRY NAME is the exact industry name from the NetSuite custom field and ### 
+	 is the three digit bus_type number.  You then can place any industry specific variable definitions in this block.
+
 	*/
 
 	if($newrow[13] == "PEST CONTROL"){$bus_type = 101; $body_font = "Times New Roman";}
-	if($newrow[13] == "PUROCLEAN"){$bus_type = 200; $body_font = "Arial";}
+	if($newrow[13] == "PUROCLEAN"){$bus_type = 200; $body_font = "Arial" $webColorPri="C60651" $webColorSec="636466";} //dwd 02/03/2010: added pri and sec color definitions
 
 	/*End Define Industries*/
 
