@@ -1,6 +1,6 @@
 <?php
 /* 
- * File: send_emails.php
+ 
  * This is code generates the template and client xml files for the LisTrak system
  *
  *  Programmer: David Duggins <duggins@leveragedmedia.com

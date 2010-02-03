@@ -1,18 +1,18 @@
 <?php
-/* 
- * file:global-inc.php
- * content: This is the global functions include 
- * Author: David Duggins
- * Created:10/02/2009
- * Updated:10/02/2009
- *
- * function list: (see each function for documentation)
- * validEmail()
- * send_email()
- * upload_file
- * get_file_dialog()
- * myErrorHandler()
- */
+/** 
+ file:global-inc.php
+  content: This is the global functions include 
+  Author: David Duggins
+  Created:10/02/2009
+  Updated:10/02/2009
+ 
+  function list: (see each function for documentation)
+  validEmail()
+  send_email()
+  upload_file
+  get_file_dialog()
+  myErrorHandler()
+*/
 
 /**
 Validate an email address.

@@ -93,7 +93,7 @@ $weburl = $data_array[$customer_index][18];
 $tagline = addslashes($data_array[$customer_index][19]);
 $bus_type = $data_array[$customer_index][20]; 
 
-$results=mysql_query("INSERT INTO LeveragedMedia.tbl_web_billing (id, client_id, companyName, reply_email, webhosting, webColPri, webColSec, address1, address2, city, state, zip, phone, fax, email, weburl, tagline, bus_type) VALUES('$intID', '$client_id', '$name', '$reply_email', '$webHosting', '$webColorPri', '$webColorSec', '$address1', '$address2', '$city', '$state', '$zip', '$phone', '$fax', '$email', '$weburl', '$tagline', '$bus_type')")or die(mysql_error());
+$results=mysql_query("INSERT INTO tbl_web_billing (id, client_id, companyName, reply_email, webhosting, webColPri, webColSec, address1, address2, city, state, zip, phone, fax, email, weburl, tagline, bus_type) VALUES('$intID', '$client_id', '$name', '$reply_email', '$webHosting', '$webColorPri', '$webColorSec', '$address1', '$address2', '$city', '$state', '$zip', '$phone', '$fax', '$email', '$weburl', '$tagline', '$bus_type')")or die(mysql_error());
 }
 }
 //end of webBilling
@@ -160,15 +160,15 @@ $isTaxable = 1;
 else { 
 $isTaxable = 0;
 }*/
-mysql_query("INSERT INTO LeveragedMedia.tbl_billing (clientID, billingCode, billingQuanity) VALUES('$client_id', '4', '1')")or die(mysql_error());
+mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity) VALUES('$client_id', '4', '1')")or die(mysql_error());
 
 if ($webhosting == 1) {
-mysql_query("INSERT INTO LeveragedMedia.tbl_billing (clientID, billingCode, billingQuanity) VALUES('$client_id', '2', '1')")or die(mysql_error());
+mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity) VALUES('$client_id', '2', '1')")or die(mysql_error());
 }//ends the webhosting check
 
 }  //end initial billing
 
-$results=mysql_query("SELECT * FROM  LeveragedMedia.tbl_clients")or die(mysql_error());
+$results=mysql_query("SELECT * FROM  tbl_clients")or die(mysql_error());
 while($row=mysql_fetch_row($results)){
 $client_id = $row[1];
 $email_address = $row[9];
@@ -177,9 +177,9 @@ $subject_human = $row[5];
 $subscriberList = $row[7];
 //if ($stateID == "SC"){ $isTaxable = 1;} else { $isTaxable = 0;}
 //bills for email campaign
-mysql_query("INSERT INTO LeveragedMedia.tbl_billing (clientID, billingCode, billingQuanity, billingSubject, billingSubscriberList) VALUES('$client_id', '3', '$email_address', '$subject_human', '$subscriberList')")or die(mysql_error());
+mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity, billingSubject, billingSubscriberList) VALUES('$client_id', '3', '$email_address', '$subject_human', '$subscriberList')")or die(mysql_error());
 //bills for direct mail campaign
-mysql_query("INSERT INTO LeveragedMedia.tbl_billing (clientID, billingCode, billingQuanity, billingSubject, billingSubscriberList) VALUES('$client_id', '1', '$phys_address', '$subject_human', '$subscriberList')")or die(mysql_error());
+mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity, billingSubject, billingSubscriberList) VALUES('$client_id', '1', '$phys_address', '$subject_human', '$subscriberList')")or die(mysql_error());
 
 
 

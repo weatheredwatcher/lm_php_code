@@ -34,13 +34,13 @@
 
 function getClients(){
 	require_once('includes/dbconnect.php');
-	$results=mysql_query("SELECT * FROM tbl_clients");
+	$results=mysql_query("SELECT * FROM tbl_clients")or die(mysql_error("Line 37"));
 	
 	$clientsXML = "<?xml version=\"1.0\" ?>\n";
 	$clientsXML .= "<clients>\n";
 	while($row=mysql_fetch_row($results)){
 	$clientID = $row[1];
-	$getCompanyName=mysql_query("SELECT companyName FROM tbl_web_billing WHERE client_id=$clientID");
+	$getCompanyName=mysql_query("SELECT companyName FROM tbl_web_billing WHERE client_id=$clientID")or die(mysql_error("Line 43"));
 	while($companyRow=mysql_fetch_row($getCompanyName)){
 	$clientName = $companyRow[0];}
 	$domainAlias = "";
@@ -60,7 +60,7 @@ function getClients(){
 	$clientsXML .= " <messageid>\n".$subjectCode."</messageid>";
 	$clientsXML .= " </messagesettings>\n";
 	$clientsXML .= " <contacts>\n"; //start contacts loop
-	$customer_results=mysql_query("SELECT * FROM tbl_customers WHERE client_id = $clientID AND subject_code = $subjectCode");
+	$customer_results=mysql_query("SELECT * FROM tbl_customers WHERE client_id = $clientID AND subject_code = $subjectCode")or die(mysql_error("line 63"));
 	while($cus_row=mysql_fetch_row($customer_results)){
 	$customer_email = $cus_row[15];
 	$customer_name = $cus_row[5];
@@ -103,7 +103,7 @@ function getTemplate(){
 	$templateXML .= "<root>\n";
 	$templateXML .= "<messages>\n";
 
-		$messages=mysql_query("SELECT * FROM tbl_topics");
+		$messages=mysql_query("SELECT * FROM tbl_topics")or die(mysql_error("106"));
 		while($message_row=mysql_fetch_row($messages)):
 		$messageID = $message_row[0];
 		$messageTitle = $message_row[1];
@@ -134,10 +134,10 @@ function getTemplate(){
 	$templateXML .= "<templates>\n";
 
 	print ("\n");
-	$results=mysql_query("SELECT DISTINCT(client_id) FROM tbl_clients");
+	$results=mysql_query("SELECT DISTINCT(client_id) FROM tbl_clients")or die(mysql_error("137"));
 	while($row=mysql_fetch_row($results)){
 	$clientID = $row[0];
-	$fieldset=mysql_query("SELECT companyName, webColPri, webColSec, address1, address2, city, state , zip, phone, fax, email, weburl, tagline, bus_type FROM tbl_web_billing WHERE client_id = $clientID")or die(mysql_error());
+	$fieldset=mysql_query("SELECT companyName, webColPri, webColSec, address1, address2, city, state , zip, phone, fax, email, weburl, tagline, bus_type FROM tbl_web_billing WHERE client_id = $clientID")or die(mysql_error("140"));
 	$newrow=mysql_fetch_row($fieldset);
 	$client_name = $newrow[0];
 	$webColorPri = $newrow[1];
