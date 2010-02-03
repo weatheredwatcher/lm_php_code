@@ -208,7 +208,7 @@ function getTemplate(){
 	$templateXML .= "<table width=\"800px\">";
 	$templateXML .= "<tr id=\"body\" style=\"font-family:$body_font\">";
 	$templateXML .= "<td id=\"main\" width=\"700px\"><!--CONTENT--></td>";
-	$templateXML .= "<td id=\"side_bar\" rowspan=\"2\" bgcolor=\"#$webColorPri\" width=\"100px\">";
+	$templateXML .= "<td id=\"side_bar\" rowspan=\"2\" bgcolor=\"#$webColorSec\" width=\"100px\">";
 	$templateXML .= "<img src=\"$IMAGE_SERVER"."s_sb.png\" />";
 	$templateXML .= "</td>";
 	$templateXML .= "</tr>";
