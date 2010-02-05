@@ -46,6 +46,6 @@ if(file_exists($billing)){
 -->
 
 <a href="?id=billing">Generate the Billing File</a> <br />
-<a href="?id=process_subscriber_lists">Approve the Sales</a> <br />
+<a href="?id=approve_sales">Approve the Sales</a> <br />
 <a href="?id=generate_data">Generate the Customer Data File </a> <br />
 
