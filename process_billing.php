@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
 	editBilling();
 }
 
-
+else {
 //sets up the variables before we process the billing
 $webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
 $marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
@@ -57,7 +57,7 @@ $readWebBilling->setDefaultConfiguration();
 $readWebBilling->readTheCsv();
 
 $checkDate = $readMarketingBilling->arrOutput;
-$getMonth = $data_array[1][9];
+//$getMonth = $data_array[1][9];
 echo("<script>alert($getMonth);</script>");
 //webBilling
 $data_array = $readWebBilling->arrOutPut;
@@ -173,13 +173,7 @@ mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity, bil
 
 
 } //ends the combine billing process
-function editBilling(){
-	
-	
-	
-	
-	
-}
+
 function writeBillingLines(){
 $list = array (
 	'Order Number,Customer Internal ID,Name,Item,Subscriber List,Qty,Month,Year,Subject,Item Pricing Level'
@@ -254,7 +248,7 @@ include_once 'includes/csv_reader.php';
 $results=(mysql_query("SELECT client_id, client_name, customer_list, subject_code, email_address, phys_address FROM tbl_clients"))or die(mysql_error());
 $emailCount = 0;
 $addressCount = 0;
-echo ("<form name=\"billing\" method=\"post\" action=\"?id=process_billing\"><table border=1><tr><th>Client Name:</th><th>Email Count</th><th>Email Billed</th><th>Address Count</th><th>Address Billed</th><tr>");
+echo ("<form name=\"billing\" method=\"post\" action=\"?id=process_billing\"><table border=1><tr><th>Client Name</th><th>Topic Code</th><th>Email Count</th><th>Email Billed</th><th>Address Count</th><th>Address Billed</th><tr>");
 while($row=mysql_fetch_row($results)){
 $read     =     new CSV_Reader;
 $subject_code = $row[3];
@@ -298,9 +292,12 @@ else{
 		}
 	}
 	
-	echo ("<tr><td><a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">$client_name</a></td><td>$emailCount</td><td><input type=text name=email".$client_id." value=$email_address /></td><td>$addressCount</td><td><input type=text name=phys".$client_id." value=$phys_address /></td></tr>");
+	echo ("<tr><td><a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">$client_name</a></td><td>$subject_code</td><td>$emailCount</td><td><input type=text name=email".$client_id."_".$subject_code." value=$email_address /></td><td>$addressCount</td><td><input type=text name=phys".$client_id."_".$subject_code." value=$phys_address /></td></tr>");
 
 }
 ?>
 <input type=submit name="submit" />
 </table></form>
+<?php
+}
+?>

@@ -156,4 +156,26 @@ function myErrorHandler($errno, $errstr, $errfile, $errline)
     return true;
 }
 
+function editBilling(){
+/**
+This is where we will start editing the billing based on the counts we processed earlier
+We rely on the fact that POST is a global variable and therefore can be read here
+*/	
+	$results=mysql_query("SELECT client_id, subject_code, subject_human FROM tbl_clients");
+	while($row=mysql_fetch_row($results)){
+		$client_id = $row[0];
+		$subject_code = $row[1];
+		$subject_human = $row[2];
+		$email_count = $_POST["email".$client_id."_".$subject_code.""];
+		$address_count = $_POST["email".$client_id."_".$subject_code.""];
+	
+	mysql_query("UPDATE billingQuantity VALUE =$email_count WHERE client_id = $client_id AND billingCode = 3 AND billingSubject = $subject_human");
+	mysql_query("UPDATE billingQuantity VALUE =$address_count WHERE client_id = $client_id AND billingCode = 1 AND billingSubject = $subject_human");
+	}
+	
+	
+	
+	
+}
+
 ?>
