@@ -73,7 +73,7 @@ $state = $data_array[$customer_index][7];
 $zip = $data_array[$customer_index][8];
 $date = $data_array[$customer_index][9];
 $timestamp = strtotime($date);
-$birthday = date('ymd' , $timestamp); // m/d/yy
+$birthday = date('Ymd' , $timestamp); // m/d/yy
 $email = $data_array[$customer_index][10];
 $message = $data_array[$customer_index][11];
 if (strlen(trim($address1)) == 0 && strlen(trim($address2)) == 0 && strlen(trim($email)) == 0){ 
