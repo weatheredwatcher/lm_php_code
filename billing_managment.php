@@ -44,7 +44,8 @@ if(file_exists($billing)){
 <!--
 	TODO check if these files exist before allowing the link to be active
 -->
-<a href="?id=billing">Generate the Billing File</a>
-<a href="?id=process_subscriber_lists">Approve the Sales</a>
-<a href="?id=generate_data">Generate the Customer Data File </a>
+
+<a href="?id=billing">Generate the Billing File</a> <br />
+<a href="?id=process_subscriber_lists">Approve the Sales</a> <br />
+<a href="?id=generate_data">Generate the Customer Data File </a> <br />
 

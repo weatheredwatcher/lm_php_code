@@ -38,6 +38,7 @@ if(file_exists($ApprovedBilling)){$ab_exists = "EXISTS";}else {$ab_exists = "NOT
         <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
         WebHostingBilling.csv: <input name="webhosting" id='web' type="file" /><br />
         MarketingBilling.csv: <input name="marketing" id='market' type="file" /><br />
+		Subscriber Lists: <input name="lists" id='lists' type="file" /><br />
         <input type="submit" name="submit" value="Click here to Upload Files" />
     </form>
 

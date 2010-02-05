@@ -16,9 +16,23 @@ require_once ('includes/csv_reader.php');
 $uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
 $webhosting = $uploads . 'WebHostingBilling.csv';
 $marketing = $uploads . 'MarketingBilling.csv';
+$lists = $uploads . 'subscriberLists.zip';
 move_uploaded_file($_FILES['webhosting']['tmp_name'], $webhosting );
 move_uploaded_file($_FILES['marketing']['tmp_name'], $marketing );
 
+$subscriber = $uploads . basename($_FILES['lists']['name']);
+move_uploaded_file($_FILES['lists']['tmp_name'], $subscriber );
+//unzips the subscriber lists
+$zip = new ZipArchive;
+$res = $zip->open($subscriber);
+if ($res === TRUE){
+echo 'Subscriber Lists Extracted.....OK <br />';
+$zip->extractTo('uploads');
+$zip->close();
+}
+else{
+echo 'Subscriber Lists Extracted.....failed, code:' .$res.'<br />';
+}
 
 
 $webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
@@ -249,13 +263,6 @@ if(file_exists($ApprovedBilling)){$ab_exists = "EXISTS";}else {$ab_exists = "NOT
 
 
 <a href="uploads/billing.csv"><img src="images/BillingCSVLarge.png" alt="Billing.csv" border="0" /></a>
-<p>After you have processed the billing.csv through netsuite, please upload ApprovedBilling.csv here:</p>
-<form enctype="multipart/form-data" action="?id=process_subscriber_lists" method="POST" onsubmit="return checkNames()">
-        <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
-        ApprovedBilling.csv: <input name="approved" id='web' type="file" /><br />
-        Subscriber Lists: <input name="subscriber" type="file" /><br />
-        <input type="submit" name="submit" value="Click here to Upload Files" />
-    </form>
 
 
 <?php
