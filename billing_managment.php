@@ -41,3 +41,10 @@ if(file_exists($billing)){
 <li>MarketingBilling.csv</li>
 <li>The Subscriber Lists zipped up in a zip file</li>
 </ul>
+<!--
+	TODO check if these files exist before allowing the link to be active
+-->
+<a href="?id=billing">Generate the Billing File</a>
+<a href="?id=process_subscriber_lists">Approve the Sales</a>
+<a href="?id=generate_data">Generate the Customer Data File </a>
+
