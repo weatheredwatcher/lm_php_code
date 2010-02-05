@@ -82,9 +82,7 @@ $readWebBilling->readTheCsv();
 
 $checkDate = $readMarketingBilling->arrOutput;
 $getMonth = $data_array[1][9];
-$thisMonth = date(m) + 1;
-echo $thisMonth;
-
+echo("<script>alert($getMonth);</script>");
 //webBilling
 $data_array = $readWebBilling->arrOutPut;
 
@@ -199,7 +197,13 @@ mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity, bil
 
 
 } //ends the combine billing process
-
+function checkBilling(){
+	
+	
+	
+	
+	
+}
 function writeBillingLines(){
 $list = array (
 	'Order Number,Customer Internal ID,Name,Item,Subscriber List,Qty,Month,Year,Subject,Item Pricing Level'

@@ -72,7 +72,7 @@ $template_id = $client_id;
 $state = $data_array[$customer_index][7];
 $zip = $data_array[$customer_index][8];
 $date = $data_array[$customer_index][9];
-if ($date == ""){
+if ($date != " "){
 $timestamp = strtotime($date);
 $birthday = date('Ymd' , $timestamp); // m/d/yy
 }
