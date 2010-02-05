@@ -5,25 +5,13 @@ require_once('includes/csv_create.php');
 //this moves the uploaded files to the correct place
 $uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
 $approved = $uploads . 'ApprovedBilling.csv';
-$subscriber = $uploads . basename($_FILES['subscriber']['name']);
+
 
 move_uploaded_file($_FILES['approved']['tmp_name'], $approved );
-move_uploaded_file($_FILES['subscriber']['tmp_name'], $subscriber );
 
-//unzips the subscriber lists
-$zip = new ZipArchive;
-$res = $zip->open($subscriber);
-if ($res === TRUE){
-echo 'Subscriber Lists Extracted.....OK <br />';
-$zip->extractTo('uploads');
-$zip->close();
-}
-else{
-echo 'Subscriber Lists Extracted.....failed, code:' .$res.'<br />';
-}
-
-
-
+/*
+	FIXED removed all the old code that handles the zip files, as that functionality has been moved to the billing portion 
+*/
 $approvedSales = new CSV_Reader;
 $approvedSales->strFilePath = 'uploads/ApprovedBilling.csv';
 $approvedSales->strOutPutMode   =     1;  // 1 will show as HTML 0 will return an array
