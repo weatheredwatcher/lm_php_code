@@ -44,10 +44,10 @@ include($id.'.php');
        
  		<div id="menu">
             <ul> 
-            	<li><a href="?id=billing">Billing Managment</a></li>
+            	<li><a href="?id=billing_managment">Billing Management</a></li>
                 <li><a href="?id=email">Email Campaign</a></li>
-                <li><a href="?id=archives">Archive Managment</a></li>
-                <li><a href="?id=software">Software Managment</a></li>
+                <li><a href="?id=archives">Archive Management</a></li>
+                <li><a href="?id=software">Software Management</a></li>
                 <li><a href="?id=logger">System Logs</a></li>
 				<li><a href="http://192.168.1.17:3000" target="_blank">Project Tracker (new window)</a></li>
             </ul>
