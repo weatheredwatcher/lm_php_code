@@ -1,7 +1,7 @@
 <?php
 $ftp_server = "customclientftp.listrak.com";
 $ftp_user = "lnet\leveragedmedia";
-$ftp_pass = "l3v3r@g3dm3d1";
+$ftp_pass = "l3v3r@g3dm3d1@";
 $ftpLog = new Log;
 $ftpLog->set_page($_SERVER['PHP_SELF']);
 $conn_id = ftp_connect($ftp_server) or die("Couldn't Connect to $ft_server");
