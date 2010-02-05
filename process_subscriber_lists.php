@@ -10,7 +10,7 @@ $approved = $uploads . 'ApprovedBilling.csv';
 move_uploaded_file($_FILES['approved']['tmp_name'], $approved );
 
 /*
-	FIXED removed all the old code that handles the zip files, as that functionality has been moved to the billing portion 
+	CHANGED removed all the old code that handles the zip files, as that functionality has been moved to the billing portion 
 */
 $approvedSales = new CSV_Reader;
 $approvedSales->strFilePath = 'uploads/ApprovedBilling.csv';
@@ -86,25 +86,3 @@ mysql_query("INSERT INTO tbl_customers (client_id, client_name, template_id, sub
 echo $subject_code.' Subscriber Lists '.$row[2].'.....OK <br />';
 
 }
-//turn table into csv file for trevets
-
-$csvcreate = new CSVCreation();
-$csvcreate->path = 'uploads/';
-
-$csvcreate->createcsv('tbl_customers');
-
-$PrinterData = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/tbl_customers.csv";              
-
-//checks to make sure files exist
-if(file_exists($PrinterData)){
-echo 'Printer Data File Created.....OK';
-
-}
-else {
-echo 'Printer Data File Created.....FAIL';
-}
-
-?>
-
-
-<a href="uploads/tbl_customers.csv"><img src="images/DownloadsLarge.png" alt="DownloadsLarge" border="0" /></a>
