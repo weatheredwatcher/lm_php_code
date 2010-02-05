@@ -64,13 +64,6 @@ else {
 
 */
 
-initBilling();
-webBilling($webBilling);
-marketingBilling($marketingBilling);
-startBilling();
-checkBilling();
-outBilling();
-
 //webBilling
 function webBilling($webBilling){
 $readWebBilling     =     new CSV_Reader;
@@ -219,7 +212,7 @@ function checkBilling(){
 	*/
 }
 //outputs the orders into a csv file
-function outbilling(){
+function outBilling($billing){
 $list = array (
 	'Order Number,Customer Internal ID,Name,Item,Subscriber List,Qty,Month,Year,Subject,Item Pricing Level'
     );
@@ -262,6 +255,13 @@ $list = array (
 	}
 //ends billingOutput
 }
+initBilling();
+webBilling($webBilling);
+marketingBilling($marketingBilling);
+startBilling();
+checkBilling();
+outBilling();
+
 fclose($fp);
 $webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
 $marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
