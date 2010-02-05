@@ -12,7 +12,7 @@ require_once ('includes/csv_reader.php');
 * Moves the upoaded files and renames them. Checks the paths to make sure that files are present (or in the case of billing.csv, not present)
 *
 */
-
+function initBilling(){
 $uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
 $webhosting = $uploads . 'WebHostingBilling.csv';
 $marketing = $uploads . 'MarketingBilling.csv';
@@ -34,7 +34,9 @@ else{
 echo 'Subscriber Lists Extracted.....failed, code:' .$res.'<br />';
 }
 
+}
 
+//sets up the variables before we process the billing
 $webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
 $marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
 $billing = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/billing.csv";                   //this is the combined billing file
@@ -57,19 +59,26 @@ echo("
 }
 else {
 /**
-*
-* Begins the process of parsing the csv files and dumping the data in the database 
-*
+
+ Begins the process of parsing the csv files and dumping the data in the database 
+
 */
 
+initBilling();
+webBilling($webBilling);
+marketingBilling($marketingBilling);
+startBilling();
+checkBilling();
+outBilling();
+
 //webBilling
-function webBilling(){
+function webBilling($webBilling){
 $readWebBilling     =     new CSV_Reader;
 
 $readWebBilling->strFilePath     =     $webBilling;
 $readWebBilling->strOutPutMode   =     0;  // 1 will show as HTML 0 will return an array
 /**
- * You must run this script to Set the essential Configuration
+  You must run this script to Set the essential Configuration
  */ 
 $readWebBilling->setDefaultConfiguration();
 $readWebBilling->readTheCsv();
@@ -115,13 +124,13 @@ $results=mysql_query("INSERT INTO tbl_web_billing (id, client_id, companyName, r
 }
 
 //marketingBilling
-function marketingBilling(){
+function marketingBilling($marketingBilling){
 $readMarketingBilling     =     new CSV_Reader;
 
 $readMarketingBilling->strFilePath     =     $marketingBilling;
 $readMarketingBilling->strOutPutMode   =     0;  // 1 will show as HTML 0 will return an array
 /**
- * You must run this script to Set the essesntial Configuration
+  You must run this script to Set the essesntial Configuration
  */ 
 $readMarketingBilling->setDefaultConfiguration();
 $readMarketingBilling->readTheCsv();
@@ -203,7 +212,12 @@ mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity, bil
 
 } //ends the combine billing process
 }
-
+function checkBilling(){
+	
+	/*
+		TODO Need to build a function that will take the billing data and check it against the parsed subscriber list files
+	*/
+}
 //outputs the orders into a csv file
 function outbilling(){
 $list = array (
