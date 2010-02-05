@@ -63,6 +63,7 @@ else {
 */
 
 //webBilling
+function webBilling(){
 $readWebBilling     =     new CSV_Reader;
 
 $readWebBilling->strFilePath     =     $webBilling;
@@ -111,8 +112,10 @@ $results=mysql_query("INSERT INTO tbl_web_billing (id, client_id, companyName, r
 }
 }
 //end of webBilling
+}
 
 //marketingBilling
+function marketingBilling(){
 $readMarketingBilling     =     new CSV_Reader;
 
 $readMarketingBilling->strFilePath     =     $marketingBilling;
@@ -160,10 +163,11 @@ mysql_query("INSERT INTO tbl_clients (client_id, client_name, month, year, subje
 
 }
 } //end of marketingBilling
-
+}
 //parse billing elements
 
 //start initial billing
+function startBilling(){
 $webresults=mysql_query("SELECT * FROM  tbl_web_billing")or die(mysql_error());
 while($webrow=mysql_fetch_row($webresults)){
 $client_id = $webrow[1];
@@ -198,8 +202,10 @@ mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity, bil
 
 
 } //ends the combine billing process
+}
 
 //outputs the orders into a csv file
+function outbilling(){
 $list = array (
 	'Order Number,Customer Internal ID,Name,Item,Subscriber List,Qty,Month,Year,Subject,Item Pricing Level'
     );
@@ -207,7 +213,7 @@ $list = array (
 
     foreach ($list as $line) {
     fputcsv($fp, split(',', $line));
-}
+		}
 
 //grabs the customer numbers from the client table
 $clients=mysql_query("SELECT * FROM tbl_web_billing")or die(mysql_error());
@@ -237,10 +243,11 @@ $list = array (
     ''.$orderID.','.$int_id.','.$nameCompany.','.$item.','.$sublist.','.$quantity.','.$month.','.$year.','.$subject.'');
     foreach ($list as $line) {
     fputcsv($fp, split(',', $line));
+			}
+		}
+	}
+//ends billingOutput
 }
-}
-}
-
 fclose($fp);
 $webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
 $marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
