@@ -11,7 +11,7 @@
 <!-- a couple of trigger elements -->
 <div id="demo">
 
-		<a href="?id=billing" title="Manage Billing"><img src="images/billing.png" alt="Billing" border="0"  /></a>
+		<a href="?id=billing_managment" title="Manage Billing"><img src="images/billing.png" alt="Billing" border="0"  /></a>
 		<a href="?id=email" title="Manage Email"><img src="images/email.png" alt="Billing" border="0" /></a>
 		<a href="?id=archives" title="Manage Archives"><img src="images/archives.png" alt="Billing" border="0" /></a>
 	
