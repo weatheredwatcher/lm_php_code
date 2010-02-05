@@ -7,33 +7,9 @@
 **
 */
 require_once ('includes/csv_reader.php');
-/**
-*
-* Moves the upoaded files and renames them. Checks the paths to make sure that files are present (or in the case of billing.csv, not present)
-*
-*/
-
-$uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
-$webhosting = $uploads . 'WebHostingBilling.csv';
-$marketing = $uploads . 'MarketingBilling.csv';
-$lists = $uploads . 'subscriberLists.zip';
-move_uploaded_file($_FILES['webhosting']['tmp_name'], $webhosting );
-move_uploaded_file($_FILES['marketing']['tmp_name'], $marketing );
-
-$subscriber = $uploads . basename($_FILES['lists']['name']);
-move_uploaded_file($_FILES['lists']['tmp_name'], $subscriber );
-//unzips the subscriber lists
-$zip = new ZipArchive;
-$res = $zip->open($subscriber);
-if ($res === TRUE){
-echo 'Subscriber Lists Extracted.....OK <br />';
-$zip->extractTo('uploads');
-$zip->close();
+if(isset($_POST['submit'])){
+	editBilling();
 }
-else{
-echo 'Subscriber Lists Extracted.....failed, code:' .$res.'<br />';
-}
-
 
 
 //sets up the variables before we process the billing
@@ -197,7 +173,7 @@ mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity, bil
 
 
 } //ends the combine billing process
-function checkBilling(){
+function editBilling(){
 	
 	
 	
@@ -269,10 +245,62 @@ if(file_exists($ApprovedBilling)){$ab_exists = "EXISTS";}else {$ab_exists = "NOT
 <tr><td>ApprovedBilling.csv</td><td><?=$ab_exists?></td></tr>
 </table>
 
-
-<a href="uploads/billing.csv"><img src="images/BillingCSVLarge.png" alt="Billing.csv" border="0" /></a>
-
-
 <?php
 }
+
+include_once 'includes/dbconnect.php';
+include_once 'includes/csv_reader.php';
+
+$results=(mysql_query("SELECT client_id, client_name, customer_list, subject_code, email_address, phys_address FROM tbl_clients"))or die(mysql_error());
+$emailCount = 0;
+$addressCount = 0;
+echo ("<form name=\"billing\" method=\"post\" action=\"?id=process_billing\"><table border=1><tr><th>Client Name:</th><th>Email Count</th><th>Email Billed</th><th>Address Count</th><th>Address Billed</th><tr>");
+while($row=mysql_fetch_row($results)){
+$read     =     new CSV_Reader;
+$subject_code = $row[3];
+$client_id = $row[0];
+$client_name = $row[1];
+$email_address = $row[4];
+$phys_address = $row[5];
+$read->strFilePath     =     'uploads/'.addslashes($row[2]);
+$read->strOutPutMode   =     1;  // 1 will show as HTML 0 will return an array
+/**
+ * You must run this script to Set the essesntial Configuration
+ */
+$read->setDefaultConfiguration();
+$read->readTheCsv();
+//$read->printOutPut(); // You can run this script or directly access $read->arrOutPut to get the output
+
+//echo $row[2];
+// $read->printOutPut(); // You can run this script or directly acces $read->arrOutPut to get the output
+
+$data_array = $read->arrOutPut;
+foreach($data_array as $customer_index => $value ){
+if ($customer_index == 0){
+//do nothing
+	}
+	else{
+
+
+$address1 = addslashes($data_array[$customer_index][4]);
+$address2 = addslashes($data_array[$customer_index][5]);
+$email = $data_array[$customer_index][10];
+
+if (strlen(trim($address1)) == 0 || strlen(trim($address2)) == 0) { }
+else{
+	$addressCount++;
+}
+
+if (strlen(trim($email)) == 0){ }
+else{
+	$emailCount++;
+}
+		}
+	}
+	
+	echo ("<tr><td><a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">$client_name</a></td><td>$emailCount</td><td><input type=text name=email".$client_id." value=$email_address /></td><td>$addressCount</td><td><input type=text name=phys".$client_id." value=$phys_address /></td></tr>");
+
+}
 ?>
+<input type=submit name="submit" />
+</table></form>
