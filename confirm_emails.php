@@ -30,7 +30,7 @@ else:
 <p>You are about to send emails to <?=$total_count?> customers. </p>
 <br />
 <br />
-<a href="?id=send_emails.php" border="0"><img src="images/SendEmailLarge.png" alt="Send Emails" border="0"/></a>
+<a href="?id=send_emails" border="0"><img src="images/SendEmailLarge.png" alt="Send Emails" border="0"/></a>
 <?
 endif;
 ?>
