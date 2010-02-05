@@ -12,7 +12,7 @@ require_once ('includes/csv_reader.php');
 * Moves the upoaded files and renames them. Checks the paths to make sure that files are present (or in the case of billing.csv, not present)
 *
 */
-function initBilling(){
+
 $uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
 $webhosting = $uploads . 'WebHostingBilling.csv';
 $marketing = $uploads . 'MarketingBilling.csv';
@@ -34,7 +34,7 @@ else{
 echo 'Subscriber Lists Extracted.....failed, code:' .$res.'<br />';
 }
 
-}
+
 
 //sets up the variables before we process the billing
 $webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
@@ -64,22 +64,28 @@ else {
 
 */
 
-//webBilling
-function webBilling($webBilling){
+
+$readMarketingBilling     =     new CSV_Reader;
 $readWebBilling     =     new CSV_Reader;
 
+$readMarketingBilling->strFilePath     =     $marketingBilling;
+$readMarketingBilling->strOutPutMode   =     0;  // 1 will show as HTML 0 will return an array
 $readWebBilling->strFilePath     =     $webBilling;
 $readWebBilling->strOutPutMode   =     0;  // 1 will show as HTML 0 will return an array
 /**
-  You must run this script to Set the essential Configuration
+  You must run this script to Set the essesntial Configuration
  */ 
+$readMarketingBilling->setDefaultConfiguration();
+$readMarketingBilling->readTheCsv();
 $readWebBilling->setDefaultConfiguration();
 $readWebBilling->readTheCsv();
-//$readWebBilling->printOutPut(); // You can run this script or directly acces $read->arrOutPut to get the output
-echo('The file has been parsed.');
 
-// $read->printOutPut(); // You can run this script or directly acces $read->arrOutPut to get the output
+$checkDate = $readMarketingBilling->arrOutput;
+$getMonth = $data_array[1][9];
+$thisMonth = date(m) + 1;
+echo $thisMonth;
 
+//webBilling
 $data_array = $readWebBilling->arrOutPut;
 
 foreach($data_array as $customer_index => $value ){
@@ -114,20 +120,10 @@ $results=mysql_query("INSERT INTO tbl_web_billing (id, client_id, companyName, r
 }
 }
 //end of webBilling
-}
+
 
 //marketingBilling
-function marketingBilling($marketingBilling){
-$readMarketingBilling     =     new CSV_Reader;
 
-$readMarketingBilling->strFilePath     =     $marketingBilling;
-$readMarketingBilling->strOutPutMode   =     0;  // 1 will show as HTML 0 will return an array
-/**
-  You must run this script to Set the essesntial Configuration
- */ 
-$readMarketingBilling->setDefaultConfiguration();
-$readMarketingBilling->readTheCsv();
-//$readMarketingBilling->printOutPut(); // You can run this script or directly acces $read->arrOutPut to get the output
 
 
 // $readMarketingBilling->printOutPut(); // You can run this script or directly acces $read->arrOutPut to get the output
@@ -165,11 +161,10 @@ mysql_query("INSERT INTO tbl_clients (client_id, client_name, month, year, subje
 
 }
 } //end of marketingBilling
-}
+
 //parse billing elements
 
 //start initial billing
-function startBilling(){
 $webresults=mysql_query("SELECT * FROM  tbl_web_billing")or die(mysql_error());
 while($webrow=mysql_fetch_row($webresults)){
 $client_id = $webrow[1];
@@ -204,15 +199,8 @@ mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity, bil
 
 
 } //ends the combine billing process
-}
-function checkBilling(){
-	
-	/*
-		TODO Need to build a function that will take the billing data and check it against the parsed subscriber list files
-	*/
-}
-//outputs the orders into a csv file
-function outBilling($billing){
+
+function writeBillingLines(){
 $list = array (
 	'Order Number,Customer Internal ID,Name,Item,Subscriber List,Qty,Month,Year,Subject,Item Pricing Level'
     );
@@ -254,15 +242,10 @@ $list = array (
 		}
 	}
 //ends billingOutput
-}
-initBilling();
-webBilling($webBilling);
-marketingBilling($marketingBilling);
-startBilling();
-checkBilling();
-outBilling();
 
 fclose($fp);
+}
+
 $webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
 $marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
 $billing = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/billing.csv";                   //this is the combined billing file
