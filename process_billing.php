@@ -246,10 +246,11 @@ include_once 'includes/dbconnect.php';
 include_once 'includes/csv_reader.php';
 
 $results=(mysql_query("SELECT client_id, client_name, customer_list, subject_code, email_address, phys_address FROM tbl_clients"))or die(mysql_error());
-$emailCount = 0;
-$addressCount = 0;
+
 echo ("<form name=\"billing\" method=\"post\" action=\"?id=process_billing\"><table border=1><tr><th>Client Name</th><th>Topic Code</th><th>Email Count</th><th>Email Billed</th><th>Address Count</th><th>Address Billed</th><tr>");
 while($row=mysql_fetch_row($results)){
+	$emailCount = 0;
+	$addressCount = 0;
 $read     =     new CSV_Reader;
 $subject_code = $row[3];
 $client_id = $row[0];
@@ -267,9 +268,12 @@ $read->readTheCsv();
 
 //echo $row[2];
 // $read->printOutPut(); // You can run this script or directly acces $read->arrOutPut to get the output
-
+/*
+	TODO Need to change this to only show when there is a descrepency in the total count
+*/
 $data_array = $read->arrOutPut;
 foreach($data_array as $customer_index => $value ){
+
 if ($customer_index == 0){
 //do nothing
 	}
@@ -291,9 +295,9 @@ else{
 }
 		}
 	}
-	
+	if ($phys_address == $addressCount && $email_address == $emailCount){}else{
 	echo ("<tr><td><a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">$client_name</a></td><td>$subject_code</td><td>$emailCount</td><td><input type=text name=email".$client_id."_".$subject_code." value=$email_address /></td><td>$addressCount</td><td><input type=text name=phys".$client_id."_".$subject_code." value=$phys_address /></td></tr>");
-
+	}
 }
 ?>
 <input type=submit name="submit" />
