@@ -72,6 +72,9 @@ $template_id = $client_id;
 $state = $data_array[$customer_index][7];
 $zip = $data_array[$customer_index][8];
 $date = $data_array[$customer_index][9];
+/*
+	TODO This needs to be tested.  Various B-Day Formats as well as blank lines
+*/
 if ($date != " "){
 $timestamp = strtotime($date);
 $birthday = date('Ymd' , $timestamp); // m/d/yy
@@ -88,6 +91,35 @@ mysql_query("INSERT INTO tbl_customers (client_id, client_name, template_id, sub
 echo $subject_code.' Subscriber Lists '.$row[2].'.....OK <br />';
 
 }
+/*
+	TODO Need to test multiple lists for this part of the check
+*/
+$clientSales = mysql_query ("SELECT * from tbl_web_billing");
+while($salesRow = mysql_fetch_row($clientSales)){
+	echo ("<table border = \"1\"><tr>");
+	$client_id = $salesRow[1];
+	$companyName = $salesRow[4];
+	$webhosting = $salesRow[6];
+	echo("<td>$client_id</td><td>$companyName</td><td><td>$webhosting</td></tr>");
+	$clientLists = mysql_query ("SELECT subject_human, customer_list, email_address, phys_address, billingStatus from tbl_clients WHERE client_id = $client_id");
+		while($listsRow = mysql_fetch_row($clientLists)){
+			$subject_human = $listsRow[0];
+			$customer_list = $listsRow[1];
+			$email_address = $listsRow[2];
+			$phys_address = $listsrow[3];
+			$billingStatus = $listsrow[4];
+			echo("<tr><td>$subject_code</td><td>$customer_list</td>");
+			if (file_exists("uploads/".$customer_list)){
+				echo("<td>EXISTS</td>");
+				}else{
+					echo("<td>n/a</td>");
+					}
+			echo("<td>$email_address</td><td>$phys_address</td><td>$billingStatus</td></tr>");
+		}
+	echo("</table><br />");
+	
+}
+	
 ?>
 
 Generate the customer data file <a href="?id=generate_data">here</a>

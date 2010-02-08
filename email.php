@@ -3,9 +3,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-//TODO:The email page is looking plain jane.  Need to spice it up a bit
-//TODO:Need a button for Send Emails.  Ask Amy for one
 ?>
 <a href="?id=main"><img src="images/back.png" width="62" border="0"/></a>
 <img src="images/email.png" width="62" />

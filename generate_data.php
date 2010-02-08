@@ -3,6 +3,9 @@
 This is the file that will generate the customer Data file for Trevitts
 */
 //turn table into csv file for trevets
+/*
+	TODO Need to finalize a query to get Trevitts only the customers that it needs
+*/
 $cust_data = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/cust_data.csv"; 
 if(file_exists($cust_data)){}else {  
 $list = array (

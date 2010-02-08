@@ -247,7 +247,7 @@ include_once 'includes/csv_reader.php';
 
 $results=(mysql_query("SELECT client_id, client_name, customer_list, subject_code, email_address, phys_address FROM tbl_clients"))or die(mysql_error());
 
-echo ("<form name=\"billing\" method=\"post\" action=\"?id=process_billing\"><table border=1><tr><th>Client Name</th><th>Topic Code</th><th>Email Count</th><th>Email Billed</th><th>Address Count</th><th>Address Billed</th><tr>");
+echo ("<form name=\"billing\" method=\"post\" action=\"?id=process_billing\"><table border=1><tr><th>ClientID</th><th>Client Name</th><th>List File</th><th>Topic Code</th><th>NS Address Count</th><th>BackOffice Address Count</th><th>NS Email Count</th><th>BackOffice Email Count</th><th>Do you want to Correct the Count?</th><tr>");
 while($row=mysql_fetch_row($results)){
 	$emailCount = 0;
 	$addressCount = 0;
@@ -284,20 +284,26 @@ $address1 = addslashes($data_array[$customer_index][4]);
 $address2 = addslashes($data_array[$customer_index][5]);
 $email = $data_array[$customer_index][10];
 
-if (strlen(trim($address1)) == 0 || strlen(trim($address2)) == 0) { }
+if (strlen(trim($address1)) == 0) { 
+	
+	if (strlen(trim($address2)) == 0) {} else {
+		$addressCount++;
+	}
+	
+	}
 else{
 	$addressCount++;
 }
-
 if (strlen(trim($email)) == 0){ }
 else{
 	$emailCount++;
 }
 		}
 	}
-	if ($phys_address == $addressCount && $email_address == $emailCount){}else{
-	echo ("<tr><td><a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">$client_name</a></td><td>$subject_code</td><td>$emailCount</td><td><input type=text name=email".$client_id."_".$subject_code." value=$email_address /></td><td>$addressCount</td><td><input type=text name=phys".$client_id."_".$subject_code." value=$phys_address /></td></tr>");
-	}
+	//if ($phys_address == $addressCount && $email_address == $emailCount){}else{
+		//<a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">
+	echo ("<tr><td>$client_id</td><td>$client_name</td><td><a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">listfile</a></td><td>$subject_code</td><td>$phys_address</td><td>$addressCount</td><td>$email_address</td><td>$emailCount</td><td>changing it up here</td></tr>");
+	//}
 }
 ?>
 <input type=submit name="submit" />

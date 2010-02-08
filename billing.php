@@ -14,7 +14,6 @@ if(file_exists($marketingBilling)){$mb_exists = "EXISTS";}else {$mb_exists = "NO
 if(file_exists($billing)){$b_exists = "EXISTS";}else {$b_exists = "NOT FOUND";}
 if(file_exists($ApprovedBilling)){$ab_exists = "EXISTS";}else {$ab_exists = "NOT FOUND";}
 
-//TODO:Need to clean up the Billing main page.  It's a bit cluttered
 ?>
 <a href="?id=main"><img src="images/back.png" width="62" border="0"/></a>
 <img src="images/billing.png" width="62" />
@@ -35,7 +34,7 @@ if(file_exists($ApprovedBilling)){$ab_exists = "EXISTS";}else {$ab_exists = "NOT
 <p>During the process, you will generate other files, please save them in the same place as the files above because you will be asked for these files as well.</p>
 
 <form enctype="multipart/form-data" action="?id=billing_upload" method="POST">
-        <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+        <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
         WebHostingBilling.csv: <input name="webhosting" id='web' type="file" /><br />
         MarketingBilling.csv: <input name="marketing" id='market' type="file" /><br />
 		Subscriber Lists: <input name="lists" id='lists' type="file" /><br />
