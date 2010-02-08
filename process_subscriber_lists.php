@@ -88,3 +88,6 @@ mysql_query("INSERT INTO tbl_customers (client_id, client_name, template_id, sub
 echo $subject_code.' Subscriber Lists '.$row[2].'.....OK <br />';
 
 }
+?>
+
+Generate the customer data file <a href="?id=generate_data">here</a>

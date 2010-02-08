@@ -174,7 +174,7 @@ We rely on the fact that POST is a global variable and therefore can be read her
 	}
 	
 	
-	
+echo ("Write Billing data to <a href=\"?id=write_billing\">File</a>");	
 	
 }
 
