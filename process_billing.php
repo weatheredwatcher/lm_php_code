@@ -112,7 +112,7 @@ else {
 //Internal ID,Customer Internal Id,Name,Subscriber List,# of Physical Addresses,# of Email Addresses,Month,Year,Subject,Subject Code
 $intID= $data_array[$customer_index][0];
 $client_id= $data_array[$customer_index][1];
-$client= $data_array[$customer_index][2];
+$client= $data_array[$customer_index][11];  //changed from 2
 $month= $data_array[$customer_index][9];
 $year= $data_array[$customer_index][6];
 $subject= $data_array[$customer_index][7];
@@ -277,7 +277,7 @@ $data_array = $read->arrOutPut;
 $get_id=mysql_query("SELECT id from tbl_billing WHERE clientID = $client_id and billingSubject = $subject_code and billingCode = 3");
 while($getrow=mysql_fetch_row($get_id)){
 	$emailID = $getRow[0];
-	print "emailid:".$emailID;
+	
 }
 foreach($data_array as $customer_index => $value ){
 
@@ -306,7 +306,22 @@ else{
 }
 		}
 	}
-	if ($phys_address == $addressCount && $email_address == $emailCount){}else{
+	if ($phys_address == $addressCount && $email_address == $emailCount){
+		echo ("<tr>
+					<td>$client_id</td><td>$client_name</td>
+					<td><a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">listfile</a></td>
+					<td>$subject_code</td>
+					<td>$phys_address</td>
+					<td>$addressCount</td>
+					<td>$email_address</td>
+					<td>$emailCount</td>
+					<td>
+						
+					</td>
+			</tr>");
+		
+		
+	}else{
 		//<a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">
 	echo ("<tr>
 				<td>$client_id</td><td>$client_name</td>
