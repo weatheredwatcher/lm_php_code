@@ -24,7 +24,7 @@ $client_id = $row[1];
 $clientName = addslashes($row[2]);
 $templateId = $row[3];
 $subjectCode = $row[4];
-$company = $row[5];
+$company = addslashes($row[5]);
 $prefix = $row[6];
 $firstname = $row[7];
 $lastname = $row[8];
@@ -34,7 +34,7 @@ $city = $row[11];
 $state = $row[12];
 $zip = $row[13];
 $bday = $row[14];
-$message = $row[16];
+$message = addslashes($row[16]);
 //Order Number,Name,Item,Subscriber List,Qty,Month,Year,Subject,Item Pricing Level,,,
 $list = array (
     ''.$client_id.','.$clientName.','.$templateId.','.$subjectCode.','.$company.','.$prefix.','.$firstname.','.$lastname.','.$address1.','.$address2.','.$city.','.$state.','.$zip.','.$bday.','.$message.'');
