@@ -21,7 +21,7 @@ $approvedSales->readTheCsv();
 $sales_array = $approvedSales->arrOutPut;
 
 foreach($sales_array as $customer_index => $value ){
-	echo "key:$customer_index value:$value";
+	
 if ($customer_index == 0 ){
 }//do nothing
 else { 
@@ -76,7 +76,7 @@ $date = $data_array[$customer_index][9];
 /*
 	TODO This needs to be tested.  Various B-Day Formats as well as blank lines
 */
-if ($date != " "){
+if (strlen(trim($date)) == 0){}else{
 $timestamp = strtotime($date);
 $birthday = date('Ymd' , $timestamp); // m/d/yy
 }
