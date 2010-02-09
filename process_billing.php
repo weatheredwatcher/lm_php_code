@@ -112,7 +112,7 @@ else {
 //Internal ID,Customer Internal Id,Name,Subscriber List,# of Physical Addresses,# of Email Addresses,Month,Year,Subject,Subject Code
 $intID= $data_array[$customer_index][0];
 $client_id= $data_array[$customer_index][1];
-$client= $data_array[$customer_index][11];  //changed from 2
+$client= $data_array[$customer_index][11];  
 $month= $data_array[$customer_index][9];
 $year= $data_array[$customer_index][6];
 $subject= $data_array[$customer_index][7];

@@ -2,12 +2,7 @@
 
 require_once ('includes/csv_reader.php');
 require_once('includes/csv_create.php');
-//this moves the uploaded files to the correct place
-$uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
-$approved = $uploads . 'ApprovedBilling.csv';
 
-
-move_uploaded_file($_FILES['approved']['tmp_name'], $approved );
 
 /*
 	CHANGED removed all the old code that handles the zip files, as that functionality has been moved to the billing portion 
@@ -92,34 +87,7 @@ mysql_query("INSERT INTO tbl_customers (client_id, client_name, template_id, sub
 echo $subject_code.' Subscriber Lists '.$row[2].'.....OK <br />';
 
 }
-/*
-	TODO Need to test multiple lists for this part of the check
-*/
-$clientSales = mysql_query ("SELECT * from tbl_web_billing");
-while($salesRow = mysql_fetch_row($clientSales)){
-	echo ("<table border = \"1\"><tr>");
-	$clientId = $salesRow[1];
-	$companyName = $salesRow[4];
-	$webhosting = $salesRow[6];
-	echo("<td>$client_id</td><td>$companyName</td><td><td>$webhosting</td></tr>");
-	$clientLists = mysql_query ("SELECT subject_human, customer_list, email_address, phys_address, billingStatus from tbl_clients WHERE client_id = $clientId");
-		while($listsRow = mysql_fetch_row($clientLists)){
-			$subject_human = $listsRow[0];
-			$customer_list = $listsRow[1];
-			$email_address = $listsRow[2];
-			$phys_address = $listsrow[3];
-			$billingStatus = $listsrow[4];
-			echo("<tr><td>$subject_code</td><td>$customer_list</td>");
-			if (file_exists("uploads/".$customer_list)){
-				echo("<td>EXISTS</td>");
-				}else{
-					echo("<td>n/a</td>");
-					}
-			echo("<td>$email_address</td><td>$phys_address</td><td>$billingStatus</td></tr>");
-		}
-	echo("</table><br />");
-	
-}
+
 	
 ?>
 
