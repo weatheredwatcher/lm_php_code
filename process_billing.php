@@ -58,7 +58,7 @@ $readWebBilling->readTheCsv();
 
 $checkDate = $readMarketingBilling->arrOutput;
 //$getMonth = $data_array[1][9];
-echo("<script>alert($getMonth);</script>");
+//echo("<script>alert($getMonth);</script>");
 //webBilling
 $data_array = $readWebBilling->arrOutPut;
 
@@ -245,19 +245,21 @@ if(file_exists($ApprovedBilling)){$ab_exists = "EXISTS";}else {$ab_exists = "NOT
 include_once 'includes/dbconnect.php';
 include_once 'includes/csv_reader.php';
 
-$results=(mysql_query("SELECT client_id, client_name, customer_list, subject_code, email_address, phys_address FROM tbl_clients"))or die(mysql_error());
+$results=(mysql_query("SELECT id, client_id, client_name, customer_list, subject_human, email_address, phys_address FROM tbl_clients"))or die(mysql_error());
 
 echo ("<form name=\"billing\" method=\"post\" action=\"?id=process_billing\"><table border=1><tr><th>ClientID</th><th>Client Name</th><th>List File</th><th>Topic Code</th><th>NS Address Count</th><th>BackOffice Address Count</th><th>NS Email Count</th><th>BackOffice Email Count</th><th>Do you want to Correct the Count?</th><tr>");
 while($row=mysql_fetch_row($results)){
 	$emailCount = 0;
 	$addressCount = 0;
+	
 $read     =     new CSV_Reader;
-$subject_code = $row[3];
-$client_id = $row[0];
-$client_name = $row[1];
-$email_address = $row[4];
-$phys_address = $row[5];
-$read->strFilePath     =     'uploads/'.addslashes($row[2]);
+$subject_code = $row[4];
+$id = $row[0];
+$client_id = $row[1];
+$client_name = $row[2];
+$email_address = $row[5];
+$phys_address = $row[6];
+$read->strFilePath     =     'uploads/'.addslashes($row[3]);
 $read->strOutPutMode   =     1;  // 1 will show as HTML 0 will return an array
 /**
  * You must run this script to Set the essesntial Configuration
@@ -272,13 +274,17 @@ $read->readTheCsv();
 	TODO Need to change this to only show when there is a descrepency in the total count
 */
 $data_array = $read->arrOutPut;
+$get_id=mysql_query("SELECT id from tbl_billing WHERE clientID = $client_id and billingSubject = $subject_code and billingCode = 3");
+while($getrow=mysql_fetch_row($get_id)){
+	$emailID = $getRow[0];
+	print "emailid:".$emailID;
+}
 foreach($data_array as $customer_index => $value ){
 
 if ($customer_index == 0){
 //do nothing
 	}
 	else{
-
 
 $address1 = addslashes($data_array[$customer_index][4]);
 $address2 = addslashes($data_array[$customer_index][5]);
@@ -300,10 +306,22 @@ else{
 }
 		}
 	}
-	//if ($phys_address == $addressCount && $email_address == $emailCount){}else{
+	if ($phys_address == $addressCount && $email_address == $emailCount){}else{
 		//<a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">
-	echo ("<tr><td>$client_id</td><td>$client_name</td><td><a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">listfile</a></td><td>$subject_code</td><td>$phys_address</td><td>$addressCount</td><td>$email_address</td><td>$emailCount</td><td>changing it up here</td></tr>");
-	//}
+	echo ("<tr>
+				<td>$client_id</td><td>$client_name</td>
+				<td><a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">listfile</a></td>
+				<td>$subject_code</td>
+				<td>$phys_address</td>
+				<td>$addressCount</td>
+				<td>$email_address</td>
+				<td>$emailCount</td>
+				<td>
+					<input alt=\"change_billing.php?id=$client_id&billingCode=1&billingSubject=$subject_code&keepThis=true&TB_iframe=true&height=250&width=400\" class=\"thickbox\" type=\"button\" name=\"address\" value=\"address\" />
+					<input alt=\"change_billing.php?id=$client_id&billingCode=3&billingSubject=$subject_code&keepThis=true&TB_iframe=true&height=250&width=400\" class=\"thickbox\" type=\"button\" name=\"email\" value=\"Email\" />
+				</td>
+		</tr>");
+	}
 }
 ?>
 <input type=submit name="submit" />

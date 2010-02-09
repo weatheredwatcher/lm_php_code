@@ -21,6 +21,7 @@ $approvedSales->readTheCsv();
 $sales_array = $approvedSales->arrOutPut;
 
 foreach($sales_array as $customer_index => $value ){
+	echo "key:$customer_index value:$value";
 if ($customer_index == 0 ){
 }//do nothing
 else { 
@@ -97,11 +98,11 @@ echo $subject_code.' Subscriber Lists '.$row[2].'.....OK <br />';
 $clientSales = mysql_query ("SELECT * from tbl_web_billing");
 while($salesRow = mysql_fetch_row($clientSales)){
 	echo ("<table border = \"1\"><tr>");
-	$client_id = $salesRow[1];
+	$clientId = $salesRow[1];
 	$companyName = $salesRow[4];
 	$webhosting = $salesRow[6];
 	echo("<td>$client_id</td><td>$companyName</td><td><td>$webhosting</td></tr>");
-	$clientLists = mysql_query ("SELECT subject_human, customer_list, email_address, phys_address, billingStatus from tbl_clients WHERE client_id = $client_id");
+	$clientLists = mysql_query ("SELECT subject_human, customer_list, email_address, phys_address, billingStatus from tbl_clients WHERE client_id = $clientId");
 		while($listsRow = mysql_fetch_row($clientLists)){
 			$subject_human = $listsRow[0];
 			$customer_list = $listsRow[1];
