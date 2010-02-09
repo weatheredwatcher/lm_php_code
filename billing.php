@@ -25,14 +25,6 @@ if(file_exists($ApprovedBilling)){$ab_exists = "EXISTS";}else {$ab_exists = "NOT
 <tr><td>ApprovedBilling.csv</td><td><?=$ab_exists?></td></tr>
 </table>
 <br />
-<p>Here you will be guided through the Billing Process. Before you begin, please make sure that you have the following files:</p>
-<ul>
-<li>WebHostingBilling.csv</li>
-<li>MarketingBilling.csv</li>
-<li>The Subscriber Lists zipped up in a zip file</li>
-</ul>
-<p>During the process, you will generate other files, please save them in the same place as the files above because you will be asked for these files as well.</p>
-
 <form enctype="multipart/form-data" action="?id=billing_upload" method="POST">
         <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
         WebHostingBilling.csv: <input name="webhosting" id='web' type="file" /><br />

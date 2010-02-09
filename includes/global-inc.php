@@ -180,4 +180,28 @@ echo ("Write Billing data to <a href=\"?id=write_billing\">File</a>");
 	
 }
 
+function getBillingCode($code){
+	
+	switch($code){
+	    case 1:
+	        $name = "Direct Mail";
+	        break;
+	    case 2:
+	        $name = "WebHosting";
+	        break;
+	    case 3:
+	        $name = "Email";
+	        break;
+		case 4:
+			$name = "Monthly Subscription";
+			break;
+		default:
+			$name = "No Such Code";
+			break;
+	}
+	
+	return $name;
+	
+}
+
 ?>
