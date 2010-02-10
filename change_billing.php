@@ -7,9 +7,6 @@ This is the file that changes the billing numbers
 $id = $_GET['id'];
 $billingCode = $_GET['billingCode'];
 $billingSubject = $_GET['billingSubject'];
-echo $id;
-echo $billingCode;
-echo $billingSubject;
 
 
 ?>

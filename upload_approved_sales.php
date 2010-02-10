@@ -5,10 +5,10 @@ include 'includes/dbconnect.php';
 
 $uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
 $approved = $uploads . 'ApprovedBilling.csv';
-
+$unapproved = $uploads . 'UnApprovedSales.csv';
 
 move_uploaded_file($_FILES['approved']['tmp_name'], $approved );
-
+move_uploaded_file($_FILES['unapproved']['tmp_name'], $unapproved );
 /**
 This is where we need to build an approved table and a not-approved table
 */
@@ -20,7 +20,7 @@ $approvedSales->strOutPutMode   =     1;  // 1 will show as HTML 0 will return a
 $approvedSales->setDefaultConfiguration();
 $approvedSales->readTheCsv();
 $data_array = $approvedSales->arrOutPut;
-
+echo("<h1>Approved Sales:</h1>");
 foreach($data_array as $customer_index => $value ){
     if($customer_index == 0){
     /* We do nothing*/ 
@@ -49,6 +49,7 @@ $results = mysql_query("SELECT * FROM tbl_billing WHERE clientID = $client_id");
 	echo("</table><br /><i>Total Ammount Billed</i>:$$amount <br /><br /><hr /><br />");
 }
 }
+echo("<h1>Unapproved Sales:</h1>");
 ?>
 
-Continue on to <a href="?id=process_subscriber_lists">process subscriber lists</a>
+Continue on to <a href="?id=process_subscriber_lists">approve sales and process the subscriber lists</a>

@@ -18,14 +18,6 @@ $marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/Marketi
 $billing = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/billing.csv";                   //this is the combined billing file
 //checks to make sure files exist
 
-if(file_exists($webBilling) && file_exists($marketingBilling)){
-
-}
-else {echo("
-<script>alert('Error! ".$webBilling." or ".$marketingBilling."  Not Found.  Please Contact a System Administrator') </script>
-
-");}
-
 if(file_exists($billing)){
 echo("
 <script>alert('Error!  File Already Exists!  Please Contact a System Administrator') </script>
@@ -309,7 +301,7 @@ else{
 	if ($phys_address == $addressCount && $email_address == $emailCount){
 		echo ("<tr>
 					<td>$client_id</td><td>$client_name</td>
-					<td><a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">listfile</a></td>
+					<td><a href=\"read_sub_list.php?id=$client_id&subject=$subject_code&keepThis=true&TB_iframe=true&height=50&width=600\" title=\"Subscriber List\" class=\"thickbox\">listfile</a></td>
 					<td>$subject_code</td>
 					<td>$phys_address</td>
 					<td>$addressCount</td>
@@ -325,7 +317,7 @@ else{
 		//<a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">
 	echo ("<tr>
 				<td>$client_id</td><td>$client_name</td>
-				<td><a href=\"read_sub_list.php?id=$client_id&keepThis=true&TB_iframe=true&height=500&width=950\" title=\"Subscriber List\" class=\"thickbox\">listfile</a></td>
+				<td><a href=\"read_sub_list.php?id=$client_id&subject=$subject_code&keepThis=true&TB_iframe=true&height=50&width=600\" title=\"Subscriber List\" class=\"thickbox\">listfile</a></td>
 				<td>$subject_code</td>
 				<td>$phys_address</td>
 				<td>$addressCount</td>
@@ -339,7 +331,7 @@ else{
 	}
 }
 ?>
-<input type=submit name="submit" />
+<input type="submit" name="submit" value="Process Billing" />
 </table></form>
 <?php
 }

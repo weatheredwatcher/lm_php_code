@@ -37,11 +37,16 @@ $zip = $row[13];
 $bday = $row[14];
 $message = addslashes($row[16]);
 //Order Number,Name,Item,Subscriber List,Qty,Month,Year,Subject,Item Pricing Level,,,
+if (strlen(trim($address1)) == 0 && strlen(trim($address2)) == 0){
+	
+}
+else {
 $list = array (
     ''.$client_id.','.$clientName.','.$templateId.','.$subjectCode.','.$company.','.$prefix.','.$firstname.','.$lastname.','.$address1.','.$address2.','.$city.','.$state.','.$zip.','.$bday.','.$message.'');
     foreach ($list as $line) {
     fputcsv($fp, split(',', $line));
 			}
+		}
 		}
 	
 //ends billingOutput
