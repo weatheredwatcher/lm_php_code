@@ -5,10 +5,9 @@ include 'includes/dbconnect.php';
 
 $uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
 $approved = $uploads . 'ApprovedBilling.csv';
-$unapproved = $uploads . 'UnApprovedSales.csv';
 
 move_uploaded_file($_FILES['approved']['tmp_name'], $approved );
-move_uploaded_file($_FILES['unapproved']['tmp_name'], $unapproved );
+
 /**
 This is where we need to build an approved table and a not-approved table
 */
@@ -31,6 +30,7 @@ $date= $data_array[$customer_index][1];
 $amount = $data_array[$customer_index][4];
 $client_id = $data_array[$customer_index][5];
 $company_name = $data_array[$customer_index][6];
+$array[] = $client_id;
 echo("<h2>$company_name($client_id):$date</h2><table>");
 $results = mysql_query("SELECT * FROM tbl_billing WHERE clientID = $client_id");
 	while($row=mysql_fetch_row($results)){
@@ -50,6 +50,39 @@ $results = mysql_query("SELECT * FROM tbl_billing WHERE clientID = $client_id");
 }
 }
 echo("<h1>Unapproved Sales:</h1>");
+$myresults = mysql_query("SELECT DISTINCT clientID FROM tbl_billing");
+	while($myrow=mysql_fetch_row($myresults)){
+		$clientID = $myrow[0];
+		
+if (in_array($clientID, $array)) {
+    // we skip
+}
+else {
+//we write the UnApproved Lists out.
+$nameResults = mysql_query("SELECT companyName FROM tbl_web_billing WHERE client_id = $clientID");
+while($nameArray = mysql_fetch_row($nameResults)){
+$companyName = $nameArray[0];	}
+echo("<h2>$companyName($clientID)</h2><table>");
+$moreResults = mysql_query("SELECT * FROM tbl_billing WHERE clientID = $clientID");
+
+while($newrow=mysql_fetch_row($moreResults)){
+	
+	$billing_code = $newrow[2];
+	$billing_quanity = $newrow[3];
+	$billing_subject = $newrow[4];
+	$mylist = $newrow[5];
+	$billing_name = getBillingCode($billing_code);
+	
+	echo("<tr><td>$billing_name</td>");
+	if($billing_code == 1){echo("<td>$billing_quanity</td><td>$billing_subject</td><td>$mylist</td></tr>");}
+	if($billing_code == 2){echo("<td>Inactive</td><td></td></tr>");}
+	if($billing_code == 3){echo("<td>$billing_quanity</td><td>$billing_subject</td><td>$mylist</td></tr>");}
+	if($billing_code == 4){echo("<td>Inactive</td><td></td></tr>");}
+}
+echo("</table><br /><br /><hr /><br />");
+
+}
+}
 ?>
 
 Continue on to <a href="?id=process_subscriber_lists">approve sales and process the subscriber lists</a>

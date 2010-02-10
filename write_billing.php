@@ -34,6 +34,7 @@ $quantity = $row[3];
 $year = date('Y');
 $sublist = $row[5];
 $subject = $row[4];
+$month = $row[6];
 //Order Number,Name,Item,Subscriber List,Qty,Month,Year,Subject,Item Pricing Level,,,
 $list = array (
     ''.$orderID.','.$int_id.','.$nameCompany.','.$item.','.$sublist.','.$quantity.','.$month.','.$year.','.$subject.'');
@@ -49,4 +50,4 @@ fclose($fp);
 
 ?>
 <a href="uploads/billing.csv"><img src="images/BillingCSVLarge.png" width="600" height="152" border="0" alt="BillingCSVLarge"></a>
-Click to continue on to <a href="?id=approve_sales">Approve Sales</a3>, or come back via the billing managment page when the approval process is complete.
+Click to continue on to <a href="?id=approve_sales">Approve Sales</a>, or come back via the billing managment page when the approval process is complete.

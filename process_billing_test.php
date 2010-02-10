@@ -281,6 +281,6 @@ else{
 ?>
 <input type="submit" name="submit" value="Process Billing" />
 </form>
-<form method="post" action="?id=process_billing">
+<form method="post" action="?id=process_billing_test">
 <input type="submit" name="submit" value="Reload Page" />
 </table></form>
