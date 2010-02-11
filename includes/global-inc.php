@@ -204,4 +204,27 @@ function getBillingCode($code){
 	
 }
 
+function cleanUploads(){
+	
+	
+	if ($handle = opendir('uploads/')) {
+	  while (false !== ($file = readdir($handle))) {
+	    if ($file != "." && $file != ".." && $file !=".archive") {
+	     unlink('uploads/'.$file); 
+	    }
+	  }
+	}
+	  closedir($handle);
+echo("<script>alert('All Files Have Been Cleared from Uploads');</script>");
+}
+
+function truncateTables(){
+	
+	mysql_query("TRUNCATE LeveragedMedia.tbl_billing");
+	mysql_query("TRUNCATE LeveragedMedia.tbl_customers");
+	mysql_query("TRUNCATE LeveragedMedia.tbl_clients");
+	mysql_query("TRUNCATE LeveragedMedia.tbl_web_billing");
+	
+	echo("<script>alert('All Tables Have Been Cleared');</script>");
+}
 ?>

@@ -18,10 +18,9 @@ $billing = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/billing.csv";   
  Begins the process of parsing the csv files and dumping the data in the database 
 
 */
-if (isset($_POST['submit'])){
-	//do nothing
-}
-else {
+
+	
+if (isset($_POST['process'])){
 $readMarketingBilling     =     new CSV_Reader;
 $readWebBilling     =     new CSV_Reader;
 
@@ -154,10 +153,8 @@ mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity, bil
 
 
 } //ends the combine billing process
+//ends the active process
 
-/*
-	FIXME remove bracket later if everything works 
-*/
 } //This has been changed to correspond to the if statement on line #21 
 
 $webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
@@ -279,8 +276,14 @@ else{
 	}
 }
 ?>
-<input type="submit" name="submit" value="Process Billing" />
+<h2>This is the page were we manage the actually billing process</h2> 
+<p>If you see an empty table, this means that the billing data has not been generated yet, please press the "Process Billing" button.</p>
+<p>Otherwise, feel free to go over the data as long as you need, before you press the "Write Billing" button to write the information to the billing.csv file.</p>
+<p>If you make any changes, press the "reload" button or refresh your browser to reload the page.</p>
+
+<input type="submit" name="submit" value="Write Billing File" />
 </form>
 <form method="post" action="?id=process_billing">
-<input type="submit" name="submit" value="Reload Page" />
+<input type="submit" name="process" value = "Process Billing" />
+<input type="submit" name="reload" value="Reload Page" />
 </table></form>

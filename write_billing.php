@@ -49,5 +49,5 @@ fclose($fp);
 }
 
 ?>
-<a href="uploads/billing.csv"><img src="images/BillingCSVLarge.png" width="600" height="152" border="0" alt="BillingCSVLarge"></a>
+<a href="uploads/billing.csv"><img src="images/BillingCSVLarge.png" width="600" height="152" border="0" alt="BillingCSVLarge"></a><br />
 Click to continue on to <a href="?id=approve_sales">Approve Sales</a>, or come back via the billing managment page when the approval process is complete.

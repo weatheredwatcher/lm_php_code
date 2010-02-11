@@ -41,14 +41,57 @@ if(file_exists($billing)){
 <li>MarketingBilling.csv</li>
 <li>The Subscriber Lists zipped up in a zip file</li>
 </ul>
-<!--
-	TODO check if these files exist before allowing the link to be active
--->
 
-<a href="?id=billing">Generate the Billing File</a> <br />
-<a href="?id=approve_sales">Approve the Sales</a> <br />
-<a href="?id=generate_data">Generate the Customer Data File </a> <br />
-<br />
-<br />
-<br />
-<h2>Need a specific file? Goto the <a href="?id=download_data">Download Data Page</a></h2>
+
+<script language="JavaScript"> 
+function openDir( form ) { 
+
+	var newIndex = form.fieldname.selectedIndex; 
+
+	if ( newIndex == 0 ) { 
+
+		alert( "Please select a location!" ); 
+
+	} else { 
+
+		cururl = form.fieldname.options[ newIndex ].value; 
+
+		window.location.assign( cururl ); 
+
+	} 
+
+} 
+
+</script> 
+
+ 
+
+<table width=100% cellpadding=4 cellspacing=0 border=0> 
+
+<form name=form> 
+
+	<tr> 
+
+		<td nowrap> 
+
+			<select name="fieldname" size="1" 
+
+				onChange="openDir( this.form )"> 
+				<option>Please Make a Choice</option>
+				<option value=?id=billing>Generate the Billing File</option>
+				<option value=?id=process_billing>Process the Billing</options> 
+				<option value=?id=write_billing>Download the Billing File</option> 
+				<option value=?id=approve_sales>Upload the Approved Sales</option> 
+				<option value=?id=upload_approved_sales>View the Approved/Unapproved Report</option> 
+				<option value=?id=generate_data>Generate the Trevetts File</option> 
+				<option value=?id=download_data>Download Data</option> 
+				<option value=?id=admin>Administrator</option>
+			</select> 
+
+		</td> 
+
+	</tr> 
+
+</form> 
+
+</table> 

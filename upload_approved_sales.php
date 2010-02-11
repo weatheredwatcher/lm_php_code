@@ -6,8 +6,10 @@ include 'includes/dbconnect.php';
 $uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
 $approved = $uploads . 'ApprovedBilling.csv';
 
-move_uploaded_file($_FILES['approved']['tmp_name'], $approved );
 
+if(!isset($_FILES['approved'])){} else {
+move_uploaded_file($_FILES['approved']['tmp_name'], $approved );
+}
 /**
 This is where we need to build an approved table and a not-approved table
 */
