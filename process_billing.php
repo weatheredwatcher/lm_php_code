@@ -9,9 +9,9 @@
 require_once ('includes/csv_reader.php');
 
 //sets up the variables before we process the billing
-$webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
-$marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
-$billing = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/billing.csv";                   //this is the combined billing file
+$webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/WebHostingBilling.csv";      //this is the website billing file
+$marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
+$billing = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/billing.csv";                   //this is the combined billing file
 
 /**
 
@@ -157,10 +157,10 @@ mysql_query("INSERT INTO tbl_billing (clientID, billingCode, billingQuanity, bil
 
 } //This has been changed to correspond to the if statement on line #21 
 
-$webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
-$marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
-$billing = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/billing.csv";                   //this is the combined billing file
-$ApprovedBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/ApprovedBilling.csv";                   //this is the combined billing file
+$webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/WebHostingBilling.csv";      //this is the website billing file
+$marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
+$billing = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/billing.csv";                   //this is the combined billing file
+$ApprovedBilling = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/ApprovedBilling.csv";                   //this is the combined billing file
 
 //checks to make sure files exist
 if(file_exists($webBilling)){$wb_exists = "EXISTS";}else {$wb_exists = "NOT FOUND";}

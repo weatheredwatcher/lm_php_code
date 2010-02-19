@@ -83,7 +83,7 @@ function getClients(){
 	//client loop ends
 	$clientsXML .= "</clients>\n";
 	
-	
+	echo("<script>alert('clientXML variable generated');</script>");
 	
 	return $clientsXML;
 }
@@ -161,7 +161,8 @@ function getTemplate(){
 	$fax = $newrow[9];
 	$email = $newrow[10];
 
-
+	$logo_1 = "logo1_$clientID";
+	
 	$newurl = $newrow[11];
 	$weburl = str_replace("http://", " ", $newurl);
 	$tagline = $newrow[12];
@@ -176,7 +177,7 @@ function getTemplate(){
 	*/
 
 	if($newrow[13] == "PEST CONTROL"){$bus_type = 101; $body_font = "Times New Roman";}
-	if($newrow[13] == "PUROCLEAN"){$bus_type = 200; $body_font = "Arial"; $webColorPri="C60651"; $webColorSec="636466";} //dwd 02/03/2010: added pri and sec color definitions
+	if($newrow[13] == "PUROCLEAN"){$bus_type = 200; $body_font = "Arial"; $webColorPri="C60651"; $webColorSec="636466"; $logo_1 = "logo1_puro";} //dwd 02/03/2010: added pri and sec color definitions
 	if($newrow[13] == "PLUMBING"){$bus_type = 300; $body_font = "Times New Roman";}
 	/*End Define Industries*/
 
@@ -193,7 +194,7 @@ function getTemplate(){
 	$templateXML .= "<body>";
 	$templateXML .= "<table width=\"800px\">";
 	$templateXML .= "<tr id=\"header_top\">";
-	$templateXML .= "<td id=logo1><img src=\"$IMAGE_SERVER"."logo1_$clientID.png\" /></td>";
+	$templateXML .= "<td id=logo1><img src=\"$IMAGE_SERVER"."$logo_1.png\" /></td>";
 							//if the bus_type is not 200, we load the tagline 
 	$templateXML .= "<td id=\"tagline\" valign=\"bottom\" style=\"font-family:Arial Bold>";
 	 if ($bus_type == 200){} else { 
@@ -204,7 +205,7 @@ function getTemplate(){
 	$templateXML .= "<td id=\"logo2\" align=\"right\">";
 
 				if ($bus_type == 200):
-	$templateXML .= "<img src=\"$IMAGE_SERVER"."logo2_$clientID.png\" />";
+	$templateXML .= "<img src=\"$IMAGE_SERVER"."logo2_puro.png\" />";
 				endif;
 	$templateXML .= "</td>";
 	$templateXML .= "</tr>";
@@ -231,11 +232,11 @@ function getTemplate(){
 
 			if($address1 ==""){}else{$templateXML .= $address1."&nbsp;&bull;&nbsp;";}  // this code places the address block with
 			if($address2 ==""){}else{$templateXML .= $address2."&nbsp;&bull;&nbsp;";}  // the appropriate bullets
-			if($city ==""){}else{$templateXML .= $city.",";}
+			if($city ==""){}else{$templateXML .= $city.;}
 			if($state ==""){}else{$templateXML .= $state."&nbsp;&bull;&nbsp;";}		// if a field is not there, it is skipped
 			if($zip ==""){}else{$templateXML .= $zip."<br />";}          // but the formatting remains consistant
-			if($phone ==""){}else{$templateXML .= "p:".$phone."&nbsp;&bull;&nbsp;";}
-			if($fax ==""){}else{$templateXML .= "f:".$fax."&nbsp;&bull;&nbsp;";}     // please use this format to add or change
+			if($phone ==""){}else{$templateXML .= "p ".$phone."&nbsp;&bull;&nbsp;";}
+			if($fax ==""){}else{$templateXML .= "f ".$fax."&nbsp;&bull;&nbsp;";}     // please use this format to add or change
 			if($email ==""){}else{$templateXML .= $email."<br />";}      // any address data.
 			if($weburl ==""){}else{$templateXML .= "<a href=".$newurl.">".$weburl."</a></p>";}
 	$templateXML .= "</td>";
@@ -252,7 +253,7 @@ function getTemplate(){
 	} 
 	$templateXML .= "</templates>\n";
 	$templateXML .= "</root>";
-	
+	echo("<script>alert('templateXML variable generated');</script>");
 	return $templateXML;
 	
 }

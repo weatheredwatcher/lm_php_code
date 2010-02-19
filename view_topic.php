@@ -16,6 +16,7 @@ while($row=mysql_fetch_row($results)){
 ?>
 <html>
 <body>
+
 <?=$message?>
 </body>
 </html>

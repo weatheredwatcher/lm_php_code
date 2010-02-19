@@ -18,6 +18,7 @@ switch($toggle){
 	case 2:
 		truncateTables();
 		break;
+	
 	default:
 		break;
 }
@@ -67,7 +68,8 @@ function openDir( form ) {
 				
 				<option>Please Make a Choice</option>
 				<option value=1>Delete Data</option>
-				<option value=2>Empty Tables</options> 
+				<option value=2>Empty Tables</options>
+				
 				
 			</select> 
 

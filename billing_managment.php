@@ -5,10 +5,10 @@ This is the billing main page.  From here you will be able to go though the bill
 
 
 
-$webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
-$marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
-$billing = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/billing.csv";                   //this is the combined billing file
-$ApprovedBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/ApprovedBilling.csv";                   //this is the combined billing file
+$webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/WebHostingBilling.csv";      //this is the website billing file
+$marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
+$billing = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/billing.csv";                   //this is the combined billing file
+$ApprovedBilling = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/ApprovedBilling.csv";                   //this is the combined billing file
 
 //checks to make sure files exist
 if(file_exists($webBilling)){$wb_exists = "EXISTS"; $wb_link = "<a href=\"uploads/WebHostingBilling.csv\">WebHostingBilling.csv</a>";}else {$wb_exists = "NOT FOUND"; $wb_link = "WebHostingBilling.csv";}

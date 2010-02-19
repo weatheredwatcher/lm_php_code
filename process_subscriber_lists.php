@@ -73,7 +73,7 @@ $date = $data_array[$customer_index][9];
 */
 if (strlen(trim($date)) == 0){}else{
 $timestamp = strtotime($date);
-$birthday = date('Ymd' , $timestamp); // m/d/yy
+$birthday = date('Ymd' , $timestamp); // yyyy/mm/dd
 }
 $email = $data_array[$customer_index][10];
 $message = $data_array[$customer_index][11];

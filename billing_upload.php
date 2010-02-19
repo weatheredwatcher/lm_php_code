@@ -5,7 +5,7 @@
 *
 */
 
-$uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
+$uploads = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/";
 $webhosting = $uploads . 'WebHostingBilling.csv';
 $marketing = $uploads . 'MarketingBilling.csv';
 $lists = $uploads . 'subscriberLists.zip';
@@ -26,10 +26,10 @@ else{
 echo 'Subscriber Lists Extracted.....failed, code:' .$res.'<br />';
 }
 
-$webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/WebHostingBilling.csv";      //this is the website billing file
-$marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
-$billing = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/billing.csv";                   //this is the combined billing file
-$ApprovedBilling = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/ApprovedBilling.csv";                   //this is the combined billing file
+$webBilling = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/WebHostingBilling.csv";      //this is the website billing file
+$marketingBilling = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/MarketingBilling.csv"; //this is the mail and email marketing billing file
+$billing = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/billing.csv";                   //this is the combined billing file
+$ApprovedBilling = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/ApprovedBilling.csv";                   //this is the combined billing file
 
 //checks to make sure files exist
 if(file_exists($webBilling)){$wb_exists = "EXISTS";}else {$wb_exists = "NOT FOUND";}

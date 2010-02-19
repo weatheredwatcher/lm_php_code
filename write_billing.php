@@ -1,6 +1,6 @@
 <?php
 
-$billing = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/billing.csv";                   //this is the combined billing file
+$billing = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/billing.csv";                   //this is the combined billing file
 if(file_exists($billing)){} else {
 $list = array (
 	'Order Number,Customer Internal ID,Name,Item,Subscriber List,Qty,Month,Year,Subject,Item Pricing Level'
@@ -24,7 +24,7 @@ while($row=mysql_fetch_row($myresults)){
 $date = date('m-d-y');
 $orderID = $row[1].'_'.$date;
 $customerID = $row[1];
-$date = date('m/d/y');
+//$date = date('m/d/y');
 if ($row[2] == 1){ $item = "Printing and Postage Fee"; }
 if ($row[2] == 2){ $item = "Website Hosting"; }
 if ($row[2] == 3){ $item = "Email Deployment Fee"; }

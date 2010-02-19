@@ -1,18 +1,9 @@
 <?php
-/**
-*  FILENAME: view_topic.php
-*  DESCRIPTION: loads the email data in a lightbox via iframe
-*
-*
-*/
-include_once('includes/dbconnect.php');
-$topicID = $_GET['topic'];
-$results=mysql_query("SELECT * FROM tbl_topics WHERE id=$topicID");
-while($row=mysql_fetch_row($results)){
-	$subject = $row[1];
-	$message = $row[2];
-		}
-	
+$message = "<h2 align=\"center\" style=\"text-transform: uppercase; font-family:Arial; font-weight:bold;\">Main Header Goes Here</h2>
+<p>
+
+</p>";
+
 ?>
 <html>
 <body>
@@ -24,14 +15,13 @@ while($row=mysql_fetch_row($results)){
 
 
 <hr />
-<form name="update" action="update_topic.php" class="thickbox">
-<input type="text" name="topicID" value=<?=$topicID?> />
+<form name="update" action="update_new_topic.php" class="thickbox">
+Topic<input type="text" name="topicID" />
 Subject<input type="text" id="subject" name="subject" value="<?=$subject?>" /><br />
 Message<textarea name="message" cols="150" rows="25" id="messageBody" style="font-size:12px"><?=$message?></textarea>
 <input type="submit" name="submit" id="submit" title="Submit" />
 </form>
-<hr />
-<?=$message?>
+
 </body>
 </html>
 

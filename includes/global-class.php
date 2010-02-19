@@ -16,7 +16,7 @@ function set_log($log_msg){
 
 function write_log(){
 	$host = 'localhost';
-	$username = 'root';
+	$username = 'lm_backoffice';
 	$password = 'password';
 	$database = 'LeveragedMedia';
 

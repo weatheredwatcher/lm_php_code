@@ -6,7 +6,7 @@ This is the file that will generate the customer Data file for Trevitts
 /*
 	TODO Need to finalize a query to get Trevitts only the customers that it needs
 */
-$cust_data = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/cust_data.csv"; 
+$cust_data = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/cust_data.csv"; 
 if(file_exists($cust_data)){}else {  
 $list = array (
 	'CLIENTID, CLIENTNAME, TEMPLATEID, SUBJECTCODE, COMPANY, PRE, FIRSTNAME, LASTNAME, ADDRESS, ADD2, CITY, STATE, ZIP, BDAY, MESSAGE'

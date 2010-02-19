@@ -12,10 +12,10 @@ include_once('includes/email_includes.php');
 $mailLog = new Log;
 $mailLog->set_page($_SERVER['PHP_SELF']);
 //ftp connection id is $conn_id
-
+echo("<script>alert('Connected to the FTP Server');</script>");
 $clientXML = getClients();
 $templateXML = getTemplate();
-$uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
+$uploads = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/";
 $clientFile = "clients_".time().".xml";
 $templateFile = "template_".time().".xml";
 $clientFilePath = $uploads.$clientFile;

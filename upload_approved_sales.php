@@ -3,7 +3,7 @@
 include_once ('includes/csv_reader.php');
 include 'includes/dbconnect.php';
 
-$uploads = $_SERVER{'DOCUMENT_ROOT'} . "/LeveragedMedia/uploads/";
+$uploads = $_SERVER{'DOCUMENT_ROOT'} . "/backoffice/uploads/";
 $approved = $uploads . 'ApprovedBilling.csv';
 
 

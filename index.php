@@ -20,6 +20,11 @@
         include("includes/global-inc.php");
         include("includes/dbconnect.php");
 		include("includes/global-class.php");
+       	ini_set('display_errors',1);
+		/**
+		Here are the error handling hooks
+		*/
+		//error_reporting(E_ALL|E_STRICT);
         set_error_handler("myErrorHandler");
         ?>
         <div id="header">
@@ -46,10 +51,10 @@ include($id.'.php');
             <ul> 
             	<li><a href="?id=billing_managment">Billing Management</a></li>
                 <li><a href="?id=email">Email Campaign</a></li>
-                <li><a href="?id=archives">Archive Management</a></li>
+                <li><a href="?id=admin">Archive Management</a></li>
                 <li><a href="?id=software">Software Management</a></li>
                 <li><a href="?id=logger">System Logs</a></li>
-				<li><a href="http://192.168.1.17:3000" target="_blank">Project Tracker (new window)</a></li>
+				<li><a href="?id=manage_logos">Image and Logo Managment</a></li>
             </ul>
         </div>
         

@@ -20,6 +20,13 @@ Provide email address (raw input)
 Returns true if the email address has the email 
 address format and the domain exists.
 */
+function login(){
+	
+	
+}
+
+
+
 function validEmail($email)
 
 {
@@ -204,20 +211,6 @@ function getBillingCode($code){
 	
 }
 
-function cleanUploads(){
-	
-	
-	if ($handle = opendir('uploads/')) {
-	  while (false !== ($file = readdir($handle))) {
-	    if ($file != "." && $file != ".." && $file !=".archive") {
-	     unlink('uploads/'.$file); 
-	    }
-	  }
-	}
-	  closedir($handle);
-echo("<script>alert('All Files Have Been Cleared from Uploads');</script>");
-}
-
 function truncateTables(){
 	
 	mysql_query("TRUNCATE LeveragedMedia.tbl_billing");
@@ -226,5 +219,52 @@ function truncateTables(){
 	mysql_query("TRUNCATE LeveragedMedia.tbl_web_billing");
 	
 	echo("<script>alert('All Tables Have Been Cleared');</script>");
+}
+
+function cleanUploads(){
+	
+	
+	if ($handle = opendir('uploads/')) {
+	  while (false !== ($file = readdir($handle))) {
+	    if ($file != "." && $file != ".." && $file !=".archive" && $file != "") {
+	     unlink('uploads/'.$file); 
+	    }
+	  }
+	}
+	  closedir($handle);
+echo("<script>alert('All Files Have Been Cleared from Uploads');</script>");
+}
+
+function backupTables(){
+	$host = 'localhost';
+	$username = 'admin';
+	$password = 'Password1';
+	$database = 'LeveragedMedia';
+
+
+	mysql_connect($host, $username, $password) or die(mysql_error());
+	//echo "Connected to MySQL<br />";
+	mysql_select_db($database) or die(mysql_error());
+	
+	$billing = "tbl_billing";
+	$customers = "tbl_customers";
+	$clients = "tbl_clients";
+	$webBilling = "tbl_web_billing";
+	$backupDir = 'archives/';
+	
+	$query1      = "SELECT * INTO OUTFILE 'archives/tbl_billing'.date().'.sql' FROM $billing";
+	$query2      = "SELECT * INTO OUTFILE 'archives/tbl_customers'.date().'.sql' FROM $customers";
+	$query3      = "SELECT * INTO OUTFILE 'archives/tbl_clients'.date().'.sql' FROM $clients";
+	$query4      = "SELECT * INTO OUTFILE 'archives/tbl_web_billing'.date().'.sql' FROM $webBilling";
+	
+	$result1 = mysql_query($query1)or die(mysql_error());
+	$result2 = mysql_query($query2)or die(mysql_error());
+	$result3 = mysql_query($query3)or die(mysql_error());
+	$result4 = mysql_query($query4)or die(mysql_error());
+mysql_close();
+
+	
+	
+	
 }
 ?>
