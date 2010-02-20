@@ -44,3 +44,4 @@ if (isset($_POST['submit'])){
 			Logos/Images: <input name="images" id='images' type="file" /><br />
 	        <input type="submit" name="submit" value="Click here to Upload Files" />
 	    </form>
+<a href="?id=view_images">Click</a> to view all the images on the server

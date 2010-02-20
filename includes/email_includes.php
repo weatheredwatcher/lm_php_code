@@ -88,6 +88,74 @@ function getClients(){
 	return $clientsXML;
 }
 
+
+
+/**
+The function testClients() is the same as getClients() except for the fact that we are hardcoding the email address. 
+Any changes made to one should also be made to the other
+*/
+function testClients(){
+	require_once('includes/dbconnect.php');
+	$results=mysql_query("SELECT * FROM tbl_clients")or die(mysql_error("Line 37"));
+
+	$clientsXML = "<?xml version=\"1.0\" ?>\n";
+	$clientsXML .= "<clients>\n";
+	while($row=mysql_fetch_row($results)){
+	$clientID = $row[1];
+	$getCompanyName=mysql_query("SELECT companyName FROM tbl_web_billing WHERE client_id=$clientID")or die(mysql_error("Line 43"));
+	
+	while($companyRow=mysql_fetch_row($getCompanyName)){
+	$clientName = $companyRow[0];}
+	$domainAlias = "";
+	$replyEmail = $row[8];
+	$subjectCode = $row[6];
+	$email_address = $row[9];
+	if($email_address <= 0) { //do nothing 
+	} else{
+	//begin loop client
+	$clientsXML .= " <client>\n";
+	$clientsXML .= " <clientname>".$clientName."\n</clientname>";
+	$clientsXML .= " <domainalias>".$domainAlias."\n</domainalias>";
+	$clientsXML .= " <messagesettings>\n";
+	$clientsXML .= " <senddate>\n</senddate>";
+	$clientsXML .= " <from address='".$replyEmail."' name='".$clientName."' />";
+	$clientsXML .= " <templateid>".$clientID."\n</templateid>";
+	$clientsXML .= " <messageid>\n".$subjectCode."</messageid>";
+	$clientsXML .= " </messagesettings>\n";
+	$clientsXML .= " <contacts>\n"; //start contacts loop
+	$customer_results=mysql_query("SELECT * FROM tbl_customers WHERE client_id = $clientID AND subject_code = $subjectCode")or die(mysql_error("line 63"));
+
+	while($cus_row=mysql_fetch_row($customer_results)){
+	$customer_email = $cus_row[15];
+	$customer_name = $cus_row[5];
+	$customer_first = $cus_row[7];
+	$customer_last = $cus_row[8];
+	if (strlen(trim($customer_name)) == 0 ){$customer_name = $customer_first.' '.$customer_last;}
+	if (strlen(trim($customer_first)) == 0 ){$customer_name = $cus_row[15];}
+		
+	if (strlen(trim($customer_email)) == 0){ //do nothing 
+	} else {
+	$clientsXML .= " <contact>\n";
+	$clientsXML .= " <email>test@leveragedmedia.com\n</email>";
+	$clientsXML .= " <firstname>".htmlspecialchars($customer_name)."\n</firstname>";
+	$clientsXML .= " </contact>\n";}
+	}
+	$clientsXML .= " </contacts>\n"; //end contacts loop
+	$clientsXML .= " </client>\n";}}
+	//client loop ends
+	$clientsXML .= "</clients>\n";
+	
+	echo("<script>alert('clientXML variable generated');</script>");
+	
+	return $clientsXML;
+}
+
+
+
+
+
+
+
 function getTemplate(){
 	
 	include_once('includes/dbconnect.php');
