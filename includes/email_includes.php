@@ -300,7 +300,7 @@ function getTemplate(){
 
 			if($address1 ==""){}else{$templateXML .= $address1."&nbsp;&bull;&nbsp;";}  // this code places the address block with
 			if($address2 ==""){}else{$templateXML .= $address2."&nbsp;&bull;&nbsp;";}  // the appropriate bullets
-			if($city ==""){}else{$templateXML .= $city.;}
+			if($city ==""){}else{$templateXML .= $city;}
 			if($state ==""){}else{$templateXML .= $state."&nbsp;&bull;&nbsp;";}		// if a field is not there, it is skipped
 			if($zip ==""){}else{$templateXML .= $zip."<br />";}          // but the formatting remains consistant
 			if($phone ==""){}else{$templateXML .= "p ".$phone."&nbsp;&bull;&nbsp;";}
