@@ -64,10 +64,10 @@ function getClients(){
 	$customer_results=mysql_query("SELECT * FROM tbl_customers WHERE client_id = $clientID AND subject_code = $subjectCode")or die(mysql_error("line 63"));
 
 	while($cus_row=mysql_fetch_row($customer_results)){
-	$customer_email = $cus_row[15];
-	$customer_name = $cus_row[5];
-	$customer_first = $cus_row[7];
-	$customer_last = $cus_row[8];
+	$customer_email = trim($cus_row[15]);
+	$customer_name = trim($cus_row[5]);
+	$customer_first = trim($cus_row[7]);
+	$customer_last = trim($cus_row[8]);
 	if (strlen(trim($customer_name)) == 0 ){$customer_name = $customer_first.' '.$customer_last;}
 	if (strlen(trim($customer_first)) == 0 ){$customer_name = $cus_row[15];}
 		
