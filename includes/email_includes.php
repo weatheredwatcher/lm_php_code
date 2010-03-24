@@ -245,7 +245,7 @@ function getTemplate(){
 	*/
 
 	if($newrow[13] == "PEST CONTROL"){$bus_type = 101; $body_font = "Times New Roman";}
-	if($newrow[13] == "PUROCLEAN"){$bus_type = 200; $body_font = "Arial"; $webColorPri="C60651"; $webColorSec="636466"; $logo_1 = "logo1_puro";} //dwd 02/03/2010: added pri and sec color definitions
+	if($newrow[13] == "DISASTER RESTORATION"){$bus_type = 200; $body_font = "Arial"; $webColorPri="C60651"; $webColorSec="636466"; $logo_1 = "logo1_puro";} //dwd 02/03/2010: added pri and sec color definitions
 	if($newrow[13] == "PLUMBING"){$bus_type = 300; $body_font = "Times New Roman";}
 	/*End Define Industries*/
 
