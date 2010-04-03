@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
-$username = 'lm_backoffice';
-$password = 'password';
+$username = 'root';
+$password = '';
 $database = 'LeveragedMedia';
 
 
